@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>
+    <%= title %>
+  </title>
+  <meta content="" name="keywords" />
+  <meta content="" name="description" />
+  <%- include('partials/links/links') %>
+</head>
+
+<body>
+ 
+  <!-- Form Registro Start-->
+  <div id="myForm" class="visual position-absolute top-50 start-50 translate-middle rounded col-sm-12 col-xl-6">
+    <div class="rounded h-100 p-4">
+      <h6 class="mb-4">Registrar Egresos</h6>
+  
+      <form id="form">
+        <!--<div class="col-xl-5">-->
+        
+        <div class="mb-3">
+          <label for="fecha_egreso" class="form-label">Fecha de Egresos</label>
+          <input type="date" class="form-control form-control-sm" id="fecha_egreso" value="2024-04-20" required />
+        </div>
+        <!--  <div class="mb-3">
+          <label for="usuario" class="form-label">Usuarios</label>
+          <select class="form-select" id="usuario" required>
+          </select>
+        </div> -->
+        <div class="mb-3">
+          <label for="tipo_egreso" class="form-label">Tipos de Egresos</label>
+          <select class="form-select" id="tipo_egreso" required>
+          </select>
+        </div>
+   <!--      <div class="mb-3">
+          <label for="miembro" class="form-label">Miembros</label>
+          <select class="form-select" id="miembro" required>
+          </select>
+        </div> -->
+
+        <div class="mb-3">
+          <label for="monto" class="form-label">Monto</label>
+          <input type="number" class="form-control form-control-sm" id="monto" required />
+        </div>
+
+        <div class="btnn d-flex justify-content-center">
+          <button type="submit" class="btn">Registrar</button>
+        </div>
+
+        <!--</div>-->
+      </form>
+    </div>
+  </div>
+  <!-- Form Registro End-->
+
+  <!-- Content Padre Start -->
+  <div class="container-fluid position-relative d-flex p-0 padre">
+    <%- include('partials/navegacion/sidebar') %>
+      <!-- Content Start -->
+      <div class="content position-relative bg-white">
+        <%- include('partials/navegacion/navbar') %>
+
+          <!-- Chart Start -->
+          <div class="container-fluid pt-4 px-4" id="chart">
+            <div class="row g-4">
+              <div class="text-center rounded p-4">
+                <div class="d-flex align-items-center justify-content-between mb-4">
+                  <h6  class="text-black-50">Registro Egresos</h6>
+                  
+                  <div class="d-flex"> 
+                    <button type="button" class="btn btn2-primary m-2 col-5" id="imprimirtabla">
+                      <i class="fas fa-file-pdf"></i>
+                    </button>
+                    
+                    <button type="button" class="btn btn2-primary m-2" id="btnAgregarUsuario">
+                      Registrar
+                    </button>
+
+                  </div>
+                  
+                </div>
+                <div class="table-responsive">
+                  <table id="myTable" class="table align-middle table-bordered table-hover mb-0">
+                    <thead>
+                      <tr class="text-black-50">
+                        <th scope="col">#</th>
+                        <th scope="col">Fecha de <br> Egresos</th>
+                        <th scope="col">Usuarios</th>
+                        <th scope="col">Tipos de Ingresos</th>
+                        <th scope="col">Monto</th>
+                        <th scope="col">Fecha de <br> Registro</th>
+                        <th scope="col">Habilitado</th>
+                        <th scope="col">Acciones</th>
+                      </tr>
+                    </thead>
+                    <tbody id="egreso">
+                      <!--mostrar tabla usuario-->
+                    </tbody>
+                </div>
+                </table>
+              </div>
+            </div>
+          </div>
+      </div>
+      <!-- Chart End -->
+
+
+      <%- include('partials/footer/footer') %>
+  </div>
+  <!-- Content End -->
+  <!-- Back to Top -->
+  <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+  <!-- Back to Top -->
+  </div>
+  <!-- Content Padre End -->
+  <%- include('partials/scripts/scripts') %>
+  <script>
+    // JavaScript para mostrar/ocultar el formulario
+    document.addEventListener("DOMContentLoaded", function () {
+      const btnAgregarUsuario = document.querySelector("#btnAgregarUsuario");
+      const formAgregarUsuario = document.querySelector("#myForm");
+      const contenidoPadre = document.querySelector(".padre");
+
+      btnAgregarUsuario.addEventListener("click", function (event) {
+        event.stopPropagation(); // Detiene la propagación del evento
+        formAgregarUsuario.classList.add("visuali"); // Muestra el formulario con animación
+        contenidoPadre.classList.add("blur"); // Aplica el efecto de desenfoque al contenedor padre
+      });
+
+      formAgregarUsuario.addEventListener("submit", function (event) {
+        event.stopPropagation(); // Detiene la propagación del evento
+        formAgregarUsuario.classList.remove("visuali"); // Oculta el formulario después de enviarlo
+        contenidoPadre.classList.remove("blur"); // Elimina el efecto de desenfoque del contenedor padre
+        // Aquí puedes agregar código para manejar el envío del formulario
+      });
+
+      window.addEventListener("click", function (event) {
+        if (
+          !event.target.matches("#btnAgregarUsuario") &&
+          !formAgregarUsuario.contains(event.target) &&
+          !event.target.closest(".select2-container")
+        ) {
+          if (formAgregarUsuario.classList.contains("visuali")) {
+            formAgregarUsuario.classList.remove("visuali"); // Quita la clase para ocultar el formulario
+            contenidoPadre.classList.remove("blur"); // Elimina el efecto de desenfoque del contenedor padre
+          }
+        }
+      });
+
+    });
+  </script>
+    <script src="/js/egresos.js"></script>
+</body>
+
+</html>

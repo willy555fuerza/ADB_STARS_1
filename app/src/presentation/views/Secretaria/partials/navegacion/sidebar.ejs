@@ -1,0 +1,41 @@
+<!-- Spinner Start -->
+<div id="spinner"
+  class="show  position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+  <div class="spinner-border text-primary" style="width: 3rem; height: 3rem" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+</div>
+<!-- Spinner End -->
+
+<!-- Sidebar Start -->
+<div class="sidebar pe-2 pb-3">
+  <nav class="navbar">
+    <a href="/Secretaria" style="display: flex; justify-content: center; width: 100%; height: 90px; ">
+      <img style="width: 60%" class="img-responsive img-fluid" alt="Responsive image" src="/will.png"
+        alt="" />
+    </a>
+    <div class="d-flex align-items-center ms-4 mb-4">
+      <div class="position-relative">
+        <img class="rounded-circle" src="/WILL.jpg" alt="" style="width: 40px; height: 40px" />
+        <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
+      </div>
+      <div class="ms-3">
+        <h6 class="mb-0" id="usernav">adm</h6>
+        <span id="perfi">adm</span>
+      </div>
+    </div>
+    <div class="navbar-nav w-100">
+      <a href="/Secretaria" class="nav-item nav-link <%= currentRoute === '/Secretaria' ? 'active' : '' %>"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+      <div class="nav-item dropdown">
+        <a href="#" class="nav-link dropdown-toggle <%= ['/Secretaria/miembro', '/Secretaria/egreso', '/Secretaria/ingreso'].includes(currentRoute) ? 'active' : '' %>" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Registros
+          </a>
+        <div class="dropdown-menu bg-transparent border-0">
+          <a href="/Secretaria/miembros  " class="dropdown-item <%= currentRoute === '/Secretaria/miembro' ? 'active' : '' %>">Miembro</a>
+          <a href="/Secretaria/egresos" class="dropdown-item <%= currentRoute === '/Secretaria/egreso' ? 'active' : '' %>">Egresos</a>
+          <a href="/Secretaria/ingresos" class="dropdown-item <%= currentRoute === '/Secretaria/ingreso' ? 'active' : '' %>">Ingresos</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</div>
+<!-- Sidebar End -->
