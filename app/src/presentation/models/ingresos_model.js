@@ -193,7 +193,7 @@ ORDER BY ingreso.fecha_ingreso;
 
         `);
       await disconnectFromPostgres(pool);
-      //console.log(result.rows)
+      console.log(result.rows)
       if (result.rows.length === 0) {
         return { data: null, error: true, message: 'No hay ingreso registrados' };
       }
