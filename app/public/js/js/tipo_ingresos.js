@@ -264,10 +264,14 @@ const render = (data) => {
       //order: [[0, 'desc']], // Ordenar la primera columna (columna del ID) de forma descendente al inicio
       columnDefs: [
         {
-           targets: '_all',
-           className: 'dt-head-center', // Centrar los títulos de todas las columnas
-       }
-     ],
+            targets: '_all',
+            className: 'dt-head-center' // Centra los títulos de todas las columnas
+        }
+    ],
+    headerCallback: function(thead, data, start, end, display) {
+        $(thead).find('th').css('background-color', '#031d35'); // Color gris
+        $(thead).find('th').css('color', '#FFFFFF'); // Color del texto (opcional)
+    }
     });
   }
 

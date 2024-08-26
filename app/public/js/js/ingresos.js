@@ -514,11 +514,15 @@ const render = async (data) => {
                       order: [], // No ordenar ninguna columna al inicio
                       // order: [[0, 'desc']], // Ordenar la primera columna (columna del ID) de forma descendente al inicio
                       columnDefs: [
-                                {
-                                    targets: '_all',
-                                    className: 'dt-head-center', // Centrar los títulos de todas las columnas
-                                }
-                            ],
+                        {
+                            targets: '_all',
+                            className: 'dt-head-center' // Centra los títulos de todas las columnas
+                        }
+                    ],
+                    headerCallback: function(thead, data, start, end, display) {
+                        $(thead).find('th').css('background-color', '#031d35'); // Color gris
+                        $(thead).find('th').css('color', '#FFFFFF'); // Color del texto (opcional)
+                    }
                   });
               } else {
                   // Destruir y volver a inicializar DataTable si ya existe
@@ -528,7 +532,7 @@ const render = async (data) => {
                   table.draw();
               }
           } else {
-              paginaVentas.innerHTML = '<tr><td colspan="8">NO SE ENCONTRARON VENTAS.</td></tr>';
+              paginaVentas.innerHTML = '<tr><td colspan="8">NO SE ENCONTRARON INGRESOS.</td></tr>';
           }
       } else {
           console.error("Error: No se resolvieron correctamente las promesas de usuario, tipo de ingresos y miembro.");
