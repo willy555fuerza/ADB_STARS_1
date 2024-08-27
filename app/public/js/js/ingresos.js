@@ -1077,7 +1077,54 @@ document.getElementById('imprimirtabla').addEventListener('click', async functio
 
   const startdate = document.getElementById("startdate").value;
   const enddate = document.getElementById("enddate").value;
-console.log(startdate, enddate)
+  const currentDate = new Date();
+  // Crear una nueva fecha con el valor de startDat
+  function formatToTwoDigits(value) {
+    return value < 10 ? '0' + value : value;
+}
+
+// Crear la fecha actual formateada (YYYY-MM-DD)
+
+const formattedCurrentDate = currentDate.getFullYear() + '-' +
+                             formatToTwoDigits(currentDate.getMonth() + 1) + '-' +
+                             formatToTwoDigits(currentDate.getDate());
+
+// Validaciones con SweetAlert2
+if (startdate > formattedCurrentDate) {
+    Swal.fire({
+        icon: 'warning',
+        title: 'Fecha Inválida',
+        text: 'La fecha de inicio debe ser menor o igual a la fecha actual.'
+    });
+    return;
+}
+
+if (enddate > formattedCurrentDate) {
+    Swal.fire({
+        icon: 'warning',
+        title: 'Fecha Inválida',
+        text: 'La fecha final debe ser mayor o igual a la fecha actual.'
+    });
+    return;
+}
+
+if (startdate > enddate) {
+    Swal.fire({
+        icon: 'warning',
+        title: 'Fecha Inválida',
+        text: 'La fecha de inicio no debe ser mayor que la fecha final.'
+    });
+    return;
+}
+
+// Si pasa todas las validaciones
+Swal.fire({
+    icon: 'success',
+    title: 'Fechas Válidas',
+    text: 'Las fechas son válidas.'
+});
+
+  
   const token = obtenerTokenre(); 
 
   if (startdate && enddate) {
