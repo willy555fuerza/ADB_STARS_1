@@ -77,6 +77,45 @@ obtenerToken();
 function mayus(e) {
   e.value = e.value.toUpperCase();
 }
+
+function updateUsuario() {
+  const nombresInput = document.getElementById('nombres');
+  const apellidosInput = document.getElementById('apellidos');
+  const usuarioInput = document.getElementById('usuario');
+
+  // Extraer el primer nombre y primer apellido
+  const nombres = nombresInput.value.trim();
+  const apellidos = apellidosInput.value.trim();
+
+  if (nombres.length > 0 && apellidos.length > 0) {
+    const primerNombre = nombres.split(' ')[0];
+    const primerApellido = apellidos.split(' ')[0];
+
+    // Actualizar el campo de usuario con la primera letra del primer nombre + primer apellido
+    usuarioInput.value = primerNombre.charAt(0).toUpperCase() + primerApellido.toUpperCase();
+  }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  const nombresInput = document.getElementById('nombres');
+  const apellidosInput = document.getElementById('apellidos');
+  const usuarioInput = document.getElementById('usuario');
+
+  // Agregar eventos 'change' a cada campo
+  nombresInput.addEventListener('change', function() {
+    mayus(this);
+    updateUsuario();
+  });
+
+  apellidosInput.addEventListener('change', function() {
+    mayus(this);
+    updateUsuario();
+  });
+
+  usuarioInput.addEventListener('change', function() {
+    mayus(this);
+  });
+});
 //*********************************poner en mayuscula**********************************/
 
 //***********************************crear usuario*************************************/
@@ -683,7 +722,6 @@ const deleteUser = async (userId) => {
 //*************************************eliminar**************************************/
 
 getAll();
-
 
 
 
