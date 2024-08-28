@@ -735,7 +735,7 @@ getAll();
 
   //*************************************notificaciones**************************************/
   
-  const getAllProducto = async () => {
+ /*  const getAllProducto = async () => {
     try {
         // Verificar si el token está presente en el localStorage
         const token = obtenerTokenre();
@@ -760,7 +760,7 @@ getAll();
         return [];
     }
 };
-  
+   */
 document.addEventListener('DOMContentLoaded', async (event) => {
   const notificationBadge = document.getElementById('notification-badge');
   const notificationLink = document.getElementById('notification-link');
@@ -847,6 +847,6 @@ document.addEventListener('DOMContentLoaded', async (event) => {
     notificationBell.classList.remove('shake');
     hideNotificationBadge();
   });
-});
+});     
 
   //*************************************notificaciones**************************************/
