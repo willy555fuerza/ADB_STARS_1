@@ -213,11 +213,11 @@ input[readonly] {
   }
   
   .selectElement .option{
-    background-color: none;
+    background-color: #FFFFFF;
   }
   /* Estilos para las opciones del menú desplegable */
   .select2-container .select2-dropdown {
-    background-color: azure;/* Cambia el color de fondo */
+    background-color: #FFFFFF;/* Cambia el color de fondo */
     /* border-color: azure; /* Cambia el color del borde */ 
     color: #0a0909; /* Cambia el color del texto */
   }
@@ -250,7 +250,8 @@ body * {
     opacity: 0;
     transition: all .3s ease-in-out;
     z-index: 0;
-    border: 2px solid #198754;
+    background-color: #FFFFFF;
+ /*    border: 2px solid #1e2121; */
 }
 
 .visuali{
@@ -279,8 +280,10 @@ body * {
 }
 .blur {
     transition: filter .3s ease;
-    filter: blur(5px); /* Ajusta el valor del blur según tus preferencias */
+    filter: opacity(.4); /* Ajusta el valor del blur según tus preferencias */
 }
+
+
 
 .back-to-top {
     position: fixed;

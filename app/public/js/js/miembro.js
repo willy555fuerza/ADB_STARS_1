@@ -11,6 +11,7 @@ const obtenerTokenre = () => {
   return token;
 };
 
+
 // Función para obtener el token del servidor
 const obtenerToken = async () => {
     try {
@@ -216,7 +217,7 @@ const Miembros = ({ id_miembro, nombres, apellidos, ci, dirrecion,telefono,fecha
                   </button>
                   <ul class="dropdown-menu ">
                       <li><a id="actualizar" class="dropdown-item" onclick="toggleEditMode(${id_miembro})" href="#" class="dropdown-item">Actualizar</a></li>
-                      <li><a onclick="deleteUser(${id_miembro})" class="dropdown-item" href="#">Eliminar</a></li>
+                      <li><a onclick="deleteUser(${id_miembro})" class="dropdown-item" href="#" id="eliminar">Eliminar</a></li>
                       <li><a onclick="changeState(${id_miembro}, ${estado})" class="dropdown-item" href="#" id="change-state-${id_miembro}">${estado ? "Inhabilitar" : "Habilitar"}</a></li>
                   </ul>
               </div>

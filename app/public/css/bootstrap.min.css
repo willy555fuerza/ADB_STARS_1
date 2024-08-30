@@ -11,7 +11,7 @@
     --bs-pink: #d63384;
     --bs-red: #dc3545;
     --bs-orange: #fd7e14;
-    --bs-yellow: #ffc107;
+   /*  --bs-yellow: #ffc107; */
     --bs-green: #198754;
     --bs-teal: #20c997;
     --bs-cyan: #0dcaf0;
@@ -22,7 +22,7 @@
     --bs-secondary: #191C24;
     --bs-success: #198754;
     --bs-info: #0dcaf0;
-    --bs-warning: #ffc107;
+   /*  --bs-warning: #ffc107; */
     --bs-danger: #dc3545;
     --bs-light: #6C7293;
     --bs-dark: #000;
@@ -2865,26 +2865,26 @@ textarea.form-control-lg {
 .btn-primary {
     color: #fffbfb;
     background-color: #3557ca;
-    border-color: #3557ca
+  /*   border-color: #3557ca */
 }
 
 .btn-primary:hover {
     color: #201d1d;
     background-color: #24409b;
-    border-color: #24409b
+   /*  border-color: #24409b */
 }
 
 .btn-check:focus+.btn-primary, .btn-primary:focus {
     color: #201d1d;
     background-color: #c6ebf2;
-    border-color: #3557ca;
+    /* border-color: #3557ca; */
     box-shadow: 0 0 0 .25rem #3558cab6
 }
 
 .btn-check:checked+.btn-primary, .btn-check:active+.btn-primary, .btn-primary:active, .btn-primary.active, .show>.btn-primary.dropdown-toggle {
     color: #201d1d;
     background-color: #3557ca;
-    border-color: #3557ca
+   /*  border-color: #3557ca */
 }
 
 .btn-check:checked+.btn-primary:focus, .btn-check:active+.btn-primary:focus, .btn-primary:active:focus, .btn-primary.active:focus, .show>.btn-primary.dropdown-toggle:focus {
@@ -2893,8 +2893,9 @@ textarea.form-control-lg {
 
 .btn-primary:disabled, .btn-primary.disabled {
     color: #fff;
-    background-color: #3557ca;
-    border-color: #3557ca
+  /*   background-color: #3557ca; */
+   /*  border-color: #3557ca */
+   border: none;
 }
 
 .btn2-primary {
@@ -2910,7 +2911,7 @@ textarea.form-control-lg {
 .btn2-check:focus+.btn2-primary, .btn2-primary:focus {
     color: #911616;
     border-color: #d8a305;
-    box-shadow: 0 0 0 .25rem #d8a305
+    box-shadow: 0 0 0 .25rem #c5e4f4
 }
 
 .btn2-check:checked+.btn2-primary, .btn2-check:active+.btn2-primary, .btn2-primary:active, .btn2-primary.active, .show>.btn2-primary.dropdown-toggle {
