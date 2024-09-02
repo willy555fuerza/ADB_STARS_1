@@ -445,7 +445,7 @@ const getAllmiembroPromise = getAllmiembros();
                     </button>
                     <ul class="dropdown-menu ">
                         <li><a id="actualizar" class="dropdown-item" onclick="toggleEditMode(${id_ingreso})" class="dropdown-item" href="#">Actualizar</a></li>
-                        <li><a onclick="deleteUser(${id_ingreso})" class="dropdown-item" href="#">Eliminar</a></li>
+                        <li id="eliminar"><a onclick="deleteUser(${id_ingreso})" class="dropdown-item" href="#">Eliminar</a></li>
                         <li><a onclick="changeState(${id_ingreso}, ${estado})" class="dropdown-item" href="#" id="change-state-${id_ingreso}">${estado ? "Inhabilitar" : "Habilitar"}</a></li>
                     </ul>
                     
@@ -524,6 +524,12 @@ const render = async (data) => {
                         $(thead).find('th').css('color', '#FFFFFF'); // Color del texto (opcional)
                     }
                   });
+                  if (datosUsuario) {
+                    if (datosUsuario.perfil !== 'ADMINISTRADOR') {
+                      const elii = document.getElementById('eliminar')
+                      elii.classList.add('d-none')
+                    }
+                  }
               } else {
                   // Destruir y volver a inicializar DataTable si ya existe
                   const table = $("#myTable").DataTable();

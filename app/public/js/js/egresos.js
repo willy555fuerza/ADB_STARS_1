@@ -393,7 +393,7 @@ const getAllTipoegresosPromise = getAllTipoegreso();
                     </button>
                     <ul class="dropdown-menu ">
                         <li><a id="actualizar" class="dropdown-item" onclick="toggleEditMode(${id_egreso})" class="dropdown-item" href="#">Actualizar</a></li>
-                        <li><a onclick="deleteUser(${id_egreso})" class="dropdown-item" href="#">Eliminar</a></li>
+                        <li id="eliminarr"><a onclick="deleteUser(${id_egreso})" class="dropdown-item" href="#">Eliminar</a></li>
                         <li><a onclick="changeState(${id_egreso}, ${estado})" class="dropdown-item" href="#" id="change-state-${id_egreso}">${estado ? "Inhabilitar" : "Habilitar"}</a></li>
                     </ul>
                     
@@ -472,6 +472,12 @@ const render = async (data) => {
                         $(thead).find('th').css('color', '#FFFFFF'); // Color del texto (opcional)
                     }
                   });
+                  if (datosUsuario) {
+                    if (datosUsuario.perfil !== 'ADMINISTRADOR') {
+                      const eli = document.getElementById('eliminarr')
+                      eli.classList.add('d-none')
+                    }
+                  }
               } else {
                   // Destruir y volver a inicializar DataTable si ya existe
                   const table = $("#myTable").DataTable();

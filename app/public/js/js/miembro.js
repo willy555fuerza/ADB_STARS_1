@@ -1,4 +1,6 @@
+globalThis.datosUsuario = datosUsuario = null;
 const baseURL3 = 'http://localhost:3009';
+
 
 const obtenerTokenre = () => {
   // Hacer una solicitud HTTP al servidor para obtener el token
@@ -28,7 +30,7 @@ const obtenerToken = async () => {
   
       // Verificar si la respuesta fue exitosa (código de estado 200)
       if (respuesta.ok) {
-        const datosUsuario = await respuesta.json();
+        globalThis.datosUsuario = await respuesta.json();
         // Mostrar los datos en un formulario
         mostrarDatosEnFormulario(datosUsuario);
       } else {
@@ -217,7 +219,7 @@ const Miembros = ({ id_miembro, nombres, apellidos, ci, dirrecion,telefono,fecha
                   </button>
                   <ul class="dropdown-menu ">
                       <li><a id="actualizar" class="dropdown-item" onclick="toggleEditMode(${id_miembro})" href="#" class="dropdown-item">Actualizar</a></li>
-                      <li><a onclick="deleteUser(${id_miembro})" class="dropdown-item" href="#" id="eliminar">Eliminar</a></li>
+                      <li id="eliminarrr"><a onclick="deleteUser(${id_miembro})" class="dropdown-item" href="#" id="eliminar">Eliminar</a></li>
                       <li><a onclick="changeState(${id_miembro}, ${estado})" class="dropdown-item" href="#" id="change-state-${id_miembro}">${estado ? "Inhabilitar" : "Habilitar"}</a></li>
                   </ul>
               </div>
@@ -237,7 +239,8 @@ const render = (data) => {
         }
         // Si ambos están habilitados o deshabilitados, ordenar por id_usuario
         return a.id_miembro - b.id_miembro;
-    });
+      
+});
 
     if (Array.isArray(sortemiembro) && sortemiembro.length > 0) {
         const cardsHTML = sortemiembro.map(item => Miembros(item)).join('');
@@ -268,6 +271,7 @@ const render = (data) => {
             previous: "<",
           },
         },
+      
         lengthMenu: [
           [5, 10, 25, 50, -1],
           [5, 10, 25, 50, "Todos"],
@@ -290,13 +294,18 @@ const render = (data) => {
           $(thead).find('th').css('background-color', '#031d35'); // Color gris
           $(thead).find('th').css('color', '#FFFFFF'); // Color del texto (opcional)
       }
-      });
-    }
     
-    } else {
+      });
+      if (datosUsuario) {
+        if (datosUsuario.perfil !== 'ADMINISTRADOR') {
+          const elii = document.getElementById('eliminarrr')
+          elii.classList.add('d-none')
+        }
+      }
+  }else {
         paginaMiembros.innerHTML = '<tr><td colspan="8">NO SE ENCONTRARON MIEMBROS.</td></tr>';
     }
-};
+}};
 
 const getAll = async () => {
     try {
