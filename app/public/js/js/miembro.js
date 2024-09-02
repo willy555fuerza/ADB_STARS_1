@@ -219,7 +219,7 @@ const Miembros = ({ id_miembro, nombres, apellidos, ci, dirrecion,telefono,fecha
                   </button>
                   <ul class="dropdown-menu ">
                       <li><a id="actualizar" class="dropdown-item" onclick="toggleEditMode(${id_miembro})" href="#" class="dropdown-item">Actualizar</a></li>
-                      <li id="eliminarrr"><a onclick="deleteUser(${id_miembro})" class="dropdown-item" href="#" id="eliminar">Eliminar</a></li>
+                      <li class="eliminarrr"><a onclick="deleteUser(${id_miembro})" class="dropdown-item" href="#" >Eliminar</a></li>
                       <li><a onclick="changeState(${id_miembro}, ${estado})" class="dropdown-item" href="#" id="change-state-${id_miembro}">${estado ? "Inhabilitar" : "Habilitar"}</a></li>
                   </ul>
               </div>
@@ -296,12 +296,31 @@ const render = (data) => {
       }
     
       });
-      if (datosUsuario) {
+     /*  if (datosUsuario) {
         if (datosUsuario.perfil !== 'ADMINISTRADOR') {
           const elii = document.getElementById('eliminarrr')
           elii.classList.add('d-none')
         }
-      }
+       } */
+        async function iniciar() { // Asegúrate de que la función sea async
+          try {
+            await obtenerToken(); // Espera a que la función obtenerToken() se complete
+            if (datosUsuario) {
+              if (datosUsuario.perfil !== 'ADMINISTRADOR') {
+                const elii = document.querySelectorAll('.eliminarrr');
+                elii.forEach((li) => {
+                  li.classList.add('d-none');
+                });
+              }
+            }
+          } catch (error) {
+            console.error('Error al obtener el token o al procesar los datos:', error);
+          }
+        }
+        
+        // Llamas a la función iniciar en algún lugar de tu código
+        iniciar();
+        
   }else {
         paginaMiembros.innerHTML = '<tr><td colspan="8">NO SE ENCONTRARON MIEMBROS.</td></tr>';
     }

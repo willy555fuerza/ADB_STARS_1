@@ -445,7 +445,7 @@ const getAllmiembroPromise = getAllmiembros();
                     </button>
                     <ul class="dropdown-menu ">
                         <li><a id="actualizar" class="dropdown-item" onclick="toggleEditMode(${id_ingreso})" class="dropdown-item" href="#">Actualizar</a></li>
-                        <li id="eliminar"><a onclick="deleteUser(${id_ingreso})" class="dropdown-item" href="#">Eliminar</a></li>
+                        <li class="elim"><a onclick="deleteUser(${id_ingreso})" class="dropdown-item " href="#">Eliminar</a></li>
                         <li><a onclick="changeState(${id_ingreso}, ${estado})" class="dropdown-item" href="#" id="change-state-${id_ingreso}">${estado ? "Inhabilitar" : "Habilitar"}</a></li>
                     </ul>
                     
@@ -524,12 +524,24 @@ const render = async (data) => {
                         $(thead).find('th').css('color', '#FFFFFF'); // Color del texto (opcional)
                     }
                   });
+                  await obtenerToken()
                   if (datosUsuario) {
                     if (datosUsuario.perfil !== 'ADMINISTRADOR') {
-                      const elii = document.getElementById('eliminar')
-                      elii.classList.add('d-none')
+                      const elii = document.querySelectorAll('.elim')
+                      elii.forEach((li) =>{
+                        li.classList.add('d-none')
+                      })
+                      //elii.classList.add('d-none')
                     }
                   }
+                  // if (datosUsuario) {
+                  //   if (datosUsuario.perfil !== 'ADMINISTRADOR') {
+                  //     const elii = document.querySelectorAll('.elim'); // Cambia querySelector a querySelectorAll para seleccionar todos los elementos
+                  //     elii.forEach((li) => {
+                  //       li.classList.add('d-none'); // Agrega la clase 'd-none' a cada elemento
+                  //     });
+                  //   }
+                  // }
               } else {
                   // Destruir y volver a inicializar DataTable si ya existe
                   const table = $("#myTable").DataTable();
