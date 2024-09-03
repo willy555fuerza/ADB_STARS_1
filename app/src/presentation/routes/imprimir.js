@@ -117,7 +117,7 @@ headers.forEach((header, i) => {
   const xPosition = 50 + columnWidths.slice(0, i).reduce((a, b) => a + b, 0);
 
   // Dibujar fondo para la celda de la cabecera
-  doc.fillColor('blue')
+  doc.fillColor('#031D35')
     .rect(xPosition, rowTop, columnWidths[i], rowHeight)
     .fill();
 
@@ -247,7 +247,7 @@ router.post('/downloadpdf', async (req, res) => {
      const xPosition = tableLeft + columnWidths.slice(0, i).reduce((a, b) => a + b, 0);
    
      // Dibujar fondo para la celda de la cabecera
-     doc.fillColor('blue')
+     doc.fillColor('#031D35')
        .rect(xPosition, rowTop, columnWidths[i], rowHeight)
        .fill();
    
@@ -371,7 +371,7 @@ router.post('/imprimirtablas', async (req, res) => {
       const xPosition = tableLeft + columnWidths.slice(0, i).reduce((a, b) => a + b, 0);
     
       // Dibujar fondo para la celda de la cabecera
-      doc.fillColor('blue')
+      doc.fillColor('#031D35')
         .rect(xPosition, rowTop, columnWidths[i], rowHeight)
         .fill();
     
@@ -477,7 +477,7 @@ router.post('/imprimirtabla', async (req, res) => {
         const xPosition = 50 + columnWidths.slice(0, i).reduce((a, b) => a + b, 0);
         
         // Dibujar el fondo de la cabecera
-        doc.fillColor('blue')
+        doc.fillColor('#031D35')
             .rect(xPosition, rowTop, columnWidths[i], rowHeight)
             .fill();
         

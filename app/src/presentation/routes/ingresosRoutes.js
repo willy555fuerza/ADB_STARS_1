@@ -90,7 +90,7 @@ router.post('/download/fecha', async (req, res) => {
       const xPosition = tableLeft + columnWidths.slice(0, i).reduce((a, b) => a + b, 0);
   
       // Dibujar fondo para la celda de la cabecera
-      doc.fillColor('blue')
+      doc.fillColor('#031D35')
         .rect(xPosition, rowTop, columnWidths[i], rowHeight)
         .fill();
   

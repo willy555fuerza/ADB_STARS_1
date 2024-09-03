@@ -1087,6 +1087,7 @@ const render = async (data) => {
         console.error('Error:', error.message);
         alert(`Error al generar el PDF: ${error.message}`);
     }
+    
 }
 
 
