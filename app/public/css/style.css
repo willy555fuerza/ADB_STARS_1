@@ -8,6 +8,28 @@
     /* --dark: #f7fff7; */
 }
 
+.x_panel {
+    background-color: #e0f7fa; /* Celeste claro */
+    border-radius: 5px; /* Bordes redondeados */
+    padding: 15px; /* Espacio interno */
+}
+
+.x_title {
+    display: flex; /* Usar flexbox para alinear elementos */
+    justify-content: space-between; /* Espacio entre los elementos */
+}
+
+.cursor-pointer {
+    cursor: pointer;
+  }
+  
+.zoom-on-hover {
+    transition: transform 0.3s ease; /* Suaviza la transición del zoom */
+}
+
+.zoom-on-hover:hover {
+    transform: scale(1.05); /* Incrementa ligeramente el tamaño del contenedor */
+}
 .font1{
     font-family: sans-serif;
 }

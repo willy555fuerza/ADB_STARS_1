@@ -60,6 +60,11 @@ router.get('/egresos', (req, res) => {
     res.render('egreso',{title: 'egresos📝'});
 });
 
+// Ruta de egresos
+router.get('/reportes', (req, res) => {
+    res.render('reportes',{title: 'Reportes📝'});
+});
+
 // Usa las rutas específicas para la Secretaria
 router.use('/Secretaria',SecretariaRoutes);
 

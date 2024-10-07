@@ -58,7 +58,7 @@ class pdf{
   usuario.apellidos AS usuario_apellidos, 
   tipo_egreso.nombre AS tipo_egreso,
   egreso.monto,
-  egreso.fecha_egreso,
+  TO_CHAR(egreso.fecha_egreso, 'DD/MM/YYYY') AS fecha_egreso, 
   (SELECT SUM(monto) FROM egreso) AS total_egresos
 FROM egreso 
 JOIN usuario ON egreso.id_usuario = usuario.id_usuario 
@@ -74,6 +74,7 @@ ORDER BY egreso.fecha_egreso;
       if (result.rows.length === 0) {
         return { error: true, message: 'Ingreso no encontrado' };
       }
+      
       return { error: false, data: result.rows };
     } catch (error) {
       console.error('Error al obtener datos del ingreso:', error);
@@ -98,7 +99,7 @@ ORDER BY egreso.fecha_egreso;
   miembro.nombres AS miembro_nombres,
   miembro.apellidos AS miembro_apellidos,
   ingreso.monto,
-  ingreso.fecha_ingreso,
+  TO_CHAR(ingreso.fecha_ingreso, 'DD/MM/YYYY') AS fecha_ingreso, 
   (SELECT SUM(monto) FROM ingreso) AS total_ingresos
 FROM ingreso 
 JOIN usuario ON ingreso.id_usuario = usuario.id_usuario 

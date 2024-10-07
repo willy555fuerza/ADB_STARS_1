@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>
+    <%= title %>
+  </title>
+  <meta content="" name="keywords" />
+  <meta content="" name="description" />
+  <%- include('partials/links/links') %>
+</head>
+
+<body>
+  <!-- Content Padre Start -->
+  <div class="container-fluid position-relative d-flex p-0 padre">
+    <%- include('partials/navegacion/sidebar') %>
+      <!-- Content Start -->
+      <div class="content position-relative bg-white">
+        <%- include('partials/navegacion/navbar') %>
+
+          <div class="container-fluid pt-4 pb-4 px-4 col-11">
+            <div class="row g-4 ">
+
+              <!-- Primera columna - Reporte de Usuarios -->
+              <div class="col-md-6 col-sm-12">
+                <form id="reporte_usuarios" class="x_panel bg-white-gris borde-inferior-usuarios">
+                  <p class="text-gris">Usuarios &nbsp; &nbsp; <i class="fa fi-sr-user-pen fa-1x text-gris"></i></p>
+
+                  <div>
+
+                    <div class="row align-items-center">
+                      <!-- Columna para el texto -->
+                      <div class="col-12 col-sm-6 text-start mb-2">
+                        <h6 class="text-dark">Usuarios registrados</h6>
+                      </div>
+                      <!-- Columna para el botón -->
+                      <div class="col-12 col-sm-6 text-sm-end text-start mb-2">
+                        <button type="submit" 
+                          class="zoom-on-hover btn btn-info btn-reporte no-line">
+                          <i class="fa fa-print"></i> Generar reporte
+                        </button>
+                      </div>
+                      
+                    </div>
+
+                  </div>
+                  <div class="x_content">
+                    <div method="post" class="formularioFichaEntreFecha">
+                      <div class="row">
+                        <div class="col-md-12 form-group">
+                          <label>DEL:</label>
+                          <input type="date" class="form-control" name="fechaInicio" id="fechade" required>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-md-12 form-group">
+                          <label>A:</label>
+                          <input type="date" class="form-control" name="fechaFinal" id="fechaA" required >
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+
+              <!-- Segunda columna - Reporte de Mienbros -->
+              <div class="col-md-6 col-sm-12">
+                <form id="reporte_miembros" class="x_panel bg-white-gris borde-inferior-clientes">
+                  <p class="text-gris">Miembros &nbsp; &nbsp; <i class="fa fi-sr-customer-care fa-1x text-gris"></i></p>
+
+                  <div>
+
+                    <div class="row align-items-center">
+                      <!-- Columna para el texto -->
+                      <div class="col-12 col-sm-6 text-start mb-2">
+                        <h6 class="text-dark">Miembros registrados</h6>
+                      </div>
+                      <!-- Columna para el botón -->
+                      <div class="col-12 col-sm-6 text-sm-end text-start mb-2">
+                        <button type="submit" 
+                          class="zoom-on-hover btn btn-info btn-reporte no-line">
+                          <i class="fa fa-print"></i> Generar reporte
+                        </button>
+                      </div>
+                      
+                    </div>
+
+                  </div>
+                  <div class="x_content">
+                    <div method="post" class="formularioFichaEntreFecha">
+                      <div class="row">
+                        <div class="col-md-12 form-group">
+                          <label>DEL:</label>
+                          <input type="date" class="form-control" name="fechaInicio" id="miembro_fechade" required>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-md-12 form-group">
+                          <label>A:</label>
+                          <input type="date" class="form-control" name="fechaFinal" id="miembro_fechaA" required >
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+
+              <!-- Tercera columna - Reporte de Ministerios -->
+              <div class="col-md-6 col-sm-12">
+                <form id="reporte_ministerios" class="x_panel bg-white-gris borde-inferior-productos">
+                  <p class="text-gris">Ministerios &nbsp; &nbsp; <i class="fa fi-sr-boxes fa-1x text-gris"></i></p>
+
+                  <div>
+
+                    <div class="row align-items-center">
+                      <!-- Columna para el texto -->
+                      <div class="col-12 col-sm-6 text-start mb-2">
+                        <h6 class="text-dark">Ministerios registrados</h6>
+                      </div>
+                      <!-- Columna para el botón -->
+                      <div class="col-12 col-sm-6 text-sm-end text-start mb-2">
+                        <button type="submit" 
+                          class="zoom-on-hover btn btn-info btn-reporte no-line">
+                          <i class="fa fa-print"></i> Generar reporte
+                        </button>
+                      </div>
+                      
+                    </div>
+
+                  </div>
+                  <div class="x_content">
+                    <div method="post" class="formularioFichaEntreFecha">
+                      <div class="row">
+                        <div class="col-md-12 form-group">
+                          <label>DEL:</label>
+                          <input type="date" class="form-control" name="fechaInicio" id="ministerios_fechade" required>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-md-12 form-group">
+                          <label>A:</label>
+                          <input type="date" class="form-control" name="fechaFinal" id="ministerios_fechaA" required >
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+
+              <!-- Cuarta columna - Reporte de Ingresos -->
+              <div class="col-md-6 col-sm-12">
+                <form id="reporte_ingrsoxusuarios" class="x_panel bg-white-gris borde-inferior-ventas">
+                  <p class="text-gris">Ingresos &nbsp; &nbsp; <i class="fa fa-chart-pie fa-1x text-gris"></i></p>
+
+                  <div>
+
+                    <div class="row align-items-center">
+                      <!-- Columna para el texto -->
+                      <div class="col-12 col-sm-6 text-start mb-2">
+                        <h6 class="text-dark">Ingresos por usuario</h6>
+                      </div>
+                      <!-- Columna para el botón -->
+                      <div class="col-12 col-sm-6 text-sm-end text-start mb-2">
+                        <button type="submit" 
+                          class="zoom-on-hover btn btn-info btn-reporte no-line">
+                          <i class="fa fa-print"></i> Generar reporte
+                        </button>
+                      </div>
+                      
+                    </div>
+
+                  </div>
+                  <div class="x_content">
+                    <div method="post" class="formularioFichaEntreFecha">
+                      <div class="row justify-content-between">
+                        <div class="col-md-4 form-group">
+                          <label>ID USUARIO</label>
+                          <input type="number" class="form-control" name="fechaMes" id="ingreso_usuario" required >
+                        </div>
+                        <div class="col-md-8 form-group">
+                          <label>DEL:</label>
+                          <input type="date" class="form-control" name="fechaInicio" id="ingresoxusuario_fechade" required>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-md-12 form-group">
+                          <label>A:</label>
+                          <input type="date" class="form-control" name="fechaFinal" id="ingresoxusuario_fechaA" required >
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+
+              <!-- Quinta columna - Reporte de Ingresos -->
+              <div class="col-md-6 col-sm-12">
+                <form id="reporte_ingrsoxmiembro" class="x_panel bg-white-gris borde-inferior-ventas">
+                  <p class="text-gris">Ingresos &nbsp; &nbsp; <i class="fa fa-chart-pie fa-1x text-gris"></i></p>
+
+                  <div>
+
+                    <div class="row align-items-center">
+                      <!-- Columna para el texto -->
+                      <div class="col-12 col-sm-6 text-start mb-2">
+                        <h6 class="text-dark">Ingresos por miembro</h6>
+                      </div>
+                      <!-- Columna para el botón -->
+                      <div class="col-12 col-sm-6 text-sm-end text-start mb-2">
+                        <button type="submit" 
+                          class="zoom-on-hover btn btn-info btn-reporte no-line">
+                          <i class="fa fa-print"></i> Generar reporte
+                        </button>
+                      </div>
+                      
+                    </div>
+
+                  </div>
+                  <div class="x_content">
+                    <div method="post" class="formularioFichaEntreFecha">
+                      <div class="row justify-content-between">
+                        <div class="col-md-4 form-group">
+                          <label>ID MIEMBRO</label>
+                          <input type="number" class="form-control" name="fechaMes" id="ingreso_miembro" required >
+                        </div>
+                        <div class="col-md-8 form-group">
+                          <label>DEL:</label>
+                          <input type="date" class="form-control" name="fechaInicio" id="ingresoxmiembro_fechade" required>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-md-12 form-group">
+                          <label>A:</label>
+                          <input type="date" class="form-control" name="fechaFinal" id="ingresoxmiembro_fechaA" required >
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+
+
+
+              <!-- Sexta columna - Reporte de Ingresos por tipo de ingreso -->
+              <div class="col-md-6 col-sm-12">
+                <form id="reporte_ingrsoxtipoingreso" class="x_panel bg-white-gris borde-inferior-ventas">
+                  <p class="text-gris">Ingresos &nbsp; &nbsp; <i class="fa fa-chart-pie fa-1x text-gris"></i></p>
+
+                  <div>
+
+                    <div class="row align-items-center">
+                      <!-- Columna para el texto -->
+                      <div class="col-12 col-sm-6 text-start mb-2">
+                        <h6 class="text-dark">Por tipo de ingreso</h6>
+                      </div>
+                      <!-- Columna para el botón -->
+                      <div class="col-12 col-sm-6 text-sm-end text-start mb-2">
+                        <button type="submit" 
+                          class="zoom-on-hover btn btn-info btn-reporte no-line">
+                          <i class="fa fa-print"></i> Generar reporte
+                        </button>
+                      </div>
+                      
+                    </div>
+
+                  </div>
+                  <div class="x_content">
+                    <div method="post" class="formularioFichaEntreFecha">
+                      <div class="row justify-content-between">
+                        <div class="col-md-4 form-group">
+                          <label>TIPO INGRESO</label>
+                          <input type="number" class="form-control" name="fechaMes" id="ingreso_tipo_ingreso" required >
+                        </div>
+                        <div class="col-md-8 form-group">
+                          <label>DEL:</label>
+                          <input type="date" class="form-control" name="fechaInicio" id="ingresoxtipoingreso_fechade" required>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-md-12 form-group">
+                          <label>A:</label>
+                          <input type="date" class="form-control" name="fechaFinal" id="ingresoxtipoingreso_fechaA" required >
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+
+
+
+
+              <!-- Octava columna - Reporte de Egresos por tipo de egreso -->
+              <div class="col-md-6 col-sm-12">
+                <form id="reporte_egrsoxtipoegreso" class="x_panel bg-white-gris borde-inferior-ventas">
+                  <p class="text-gris">Egresos &nbsp; &nbsp; <i class="fa fa-chart-pie fa-1x text-gris"></i></p>
+
+                  <div>
+
+                    <div class="row align-items-center">
+                      <!-- Columna para el texto -->
+                      <div class="col-12 col-sm-6 text-start mb-2">
+                        <h6 class="text-dark">Por tipo de egreso</h6>
+                      </div>
+                      <!-- Columna para el botón -->
+                      <div class="col-12 col-sm-6 text-sm-end text-start mb-2">
+                        <button type="submit" 
+                          class="zoom-on-hover btn btn-info btn-reporte no-line">
+                          <i class="fa fa-print"></i> Generar reporte
+                        </button>
+                      </div>
+                      
+                    </div>
+
+                  </div>
+                  <div class="x_content">
+                    <div method="post" class="formularioFichaEntreFecha">
+                      <div class="row justify-content-between">
+                        <div class="col-md-4 form-group">
+                          <label>TIPO EGRESO</label>
+                          <input type="number" class="form-control" name="fechaMes" id="egreso_tipo_egreso" required >
+                        </div>
+                        <div class="col-md-8 form-group">
+                          <label>DEL:</label>
+                          <input type="date" class="form-control" name="fechaInicio" id="egresoxtipoegreso_fechade" required>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-md-12 form-group">
+                          <label>A:</label>
+                          <input type="date" class="form-control" name="fechaFinal" id="egresoxtipoegreso_fechaA" required >
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+
+
+
+              <!-- Novena columna - Reporte de Egresos por tipo de egreso -->
+              <div class="col-md-6 col-sm-12">
+                <form id="reporte_miembrosxministerio" class="x_panel bg-white-gris borde-inferior-ventas">
+                  <p class="text-gris">Lista &nbsp; &nbsp; <i class="fa fa-chart-pie fa-1x text-gris"></i></p>
+
+                  <div>
+
+                    <div class="row align-items-center">
+                      <!-- Columna para el texto -->
+                      <div class="col-12 col-sm-6 text-start mb-2">
+                        <h6 class="text-dark">MIEMBROS POR MINISTERIO</h6>
+                      </div>
+                      <!-- Columna para el botón -->
+                      <div class="col-12 col-sm-6 text-sm-end text-start mb-2">
+                        <button type="submit" 
+                          class="zoom-on-hover btn btn-info btn-reporte no-line">
+                          <i class="fa fa-print"></i> Generar reporte
+                        </button>
+                      </div>
+                      
+                    </div>
+
+                  </div>
+                  <div class="x_content">
+                    <div method="post" class="formularioFichaEntreFecha">
+                      <div class="row justify-content-between">
+                        <div class="col-md-4 form-group">
+                          <label>MINISTERIO</label>
+                          <input type="number" class="form-control" name="fechaMes" id="miembrosxministerio" required >
+                        </div>
+                        <div class="col-md-8 form-group">
+                          <label>DEL:</label>
+                          <input type="date" class="form-control" name="fechaInicio" id="miembrosxministerio_fechade" required>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-md-12 form-group">
+                          <label>A:</label>
+                          <input type="date" class="form-control" name="fechaFinal" id="miembrosxministerio_fechaA" required >
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+
+
+
+
+              <!-- Novena columna - Reporte de Egresos -->
+              <div class="col-md-6 col-sm-12">
+                <form id="reporte_egreso" class="x_panel bg-white-gris borde-inferior-ventas">
+                  <p class="text-gris">Egreso &nbsp; &nbsp; <i class="fa fa-chart-pie fa-1x text-gris"></i></p>
+
+                  <div>
+
+                    <div class="row align-items-center">
+                      <!-- Columna para el texto -->
+                      <div class="col-12 col-sm-6 text-start mb-2">
+                        <h6 class="text-dark">EGRESO</h6>
+                      </div>
+                      <!-- Columna para el botón -->
+                      <div class="col-12 col-sm-6 text-sm-end text-start mb-2">
+                        <button type="submit" 
+                          class="zoom-on-hover btn btn-info btn-reporte no-line">
+                          <i class="fa fa-print"></i> Generar reporte
+                        </button>
+                      </div>
+                      
+                    </div>
+
+                  </div>
+                  <div class="x_content">
+                    <div method="post" class="formularioFichaEntreFecha">
+                      <div class="row justify-content-between">
+                        <div class="col-md-12 form-group">
+                          <label>DEL:</label>
+                          <input type="date" class="form-control" name="fechaInicio" id="egreso_fechade" required>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-md-12 form-group">
+                          <label>A:</label>
+                          <input type="date" class="form-control" name="fechaFinal" id="egreso_fechaA" required >
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+
+
+              
+
+
+              <!-- Decima columna - Reporte de Egresos -->
+              <div class="col-md-6 col-sm-12">
+                <form id="reporte_ingreso" class="x_panel bg-white-gris borde-inferior-ventas">
+                  <p class="text-gris">Ingreso &nbsp; &nbsp; <i class="fa fa-chart-pie fa-1x text-gris"></i></p>
+
+                  <div>
+
+                    <div class="row align-items-center">
+                      <!-- Columna para el texto -->
+                      <div class="col-12 col-sm-6 text-start mb-2">
+                        <h6 class="text-dark">INGRESO</h6>
+                      </div>
+                      <!-- Columna para el botón -->
+                      <div class="col-12 col-sm-6 text-sm-end text-start mb-2">
+                        <button type="submit" 
+                          class="zoom-on-hover btn btn-info btn-reporte no-line">
+                          <i class="fa fa-print"></i> Generar reporte
+                        </button>
+                      </div>
+                      
+                    </div>
+
+                  </div>
+                  <div class="x_content">
+                    <div method="post" class="formularioFichaEntreFecha">
+                      <div class="row justify-content-between">
+                        <div class="col-md-12 form-group">
+                          <label>DEL:</label>
+                          <input type="date" class="form-control" name="fechaInicio" id="ingreso_fechade" required>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-md-12 form-group">
+                          <label>A:</label>
+                          <input type="date" class="form-control" name="fechaFinal" id="ingreso_fechaA" required >
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+
+
+
+            </div>
+          </div>
+
+          <%- include('partials/footer/footer') %>
+      </div>
+      <!-- Content End -->
+      <!-- Back to Top -->
+      <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+      <!-- Back to Top -->
+  </div>
+  <!-- Content Padre End -->
+  <%- include('partials/scripts/scripts') %>
+    <script src="/js/reportes.js"></script>
+</body>
+
+</html>

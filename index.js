@@ -48,6 +48,7 @@ app.use(express.static(path.join(__dirname, 'app/public/js')));
 app.use(express.static(path.join(__dirname, 'app/public/lib')));
 app.use(express.static(path.join(__dirname, 'app/public/scss')));
 app.use(express.static(path.join(__dirname, 'app/src/shared/constants')))
+app.use(express.static(path.join(__dirname, 'app/public/scss')));
 
 // Servir archivos CSS desde node_modules
 app.use('/flaticon', express.static(path.join(__dirname, 'node_modules/@flaticon/flaticon-uicons/css')));
@@ -78,6 +79,7 @@ const tipo_egresosRoutes = require('./app/src/presentation/routes/tipo_egresosRo
 const egresoRoutes = require('./app/src/presentation/routes/egresosRoutes')
 const perfilRoutes = require('./app/src/presentation/routes/perfilRoutes')
 const downloadpdf = require('./app/src/presentation/routes/imprimir')
+const reportes = require('./app/src/presentation/routes/reporteRoutes')
 
 
 
@@ -97,6 +99,7 @@ app.use(tipo_egresosRoutes,authMiddleware);
 app.use(egresoRoutes,authMiddleware);
 app.use(perfilRoutes,authMiddleware);
 app.use(downloadpdf);
+app.use(reportes,authMiddleware);
 
 
 //app.use('/auth', authRoutes);

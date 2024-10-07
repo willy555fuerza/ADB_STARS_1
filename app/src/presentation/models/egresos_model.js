@@ -165,6 +165,39 @@ static async stock() {
   }
 }
 
+static async fecha(enddate, startdate) {
+  try {
+    const pool = await connectToPostgres();
+    if (!pool) {
+      throw new Error('Error al conectar con PostgreSQL');
+    }
+    const result = await pool.query(`
+      SELECT 
+      egreso.id_egreso, 
+      usuario.nombres AS usuario_nombres, 
+      usuario.apellidos AS usuario_apellidos, 
+      tipo_egreso.nombre AS tipo_egreso_nombre,
+      egreso.monto,
+      egreso.fecha_egreso,
+      (SELECT SUM(monto) FROM egreso) AS total_egresos
+      FROM egreso 
+      JOIN usuario ON egreso.id_usuario = usuario.id_usuario 
+      JOIN tipo_egreso ON egreso.id_tipo_egresos = tipo_egreso.id_tipo_egresos
+			WHERE egreso.fecha_egreso BETWEEN '${startdate}' AND '${enddate}'
+      ORDER BY egreso.fecha_egreso;
+      `);
+    await disconnectFromPostgres(pool);
+    //console.log(result.rows)
+    if (result.rows.length === 0) {
+      return { data: null, error: true, message: 'No hay egresos registrados' };
+    }
+
+    return { data: result.rows, error: false };
+  } catch (error) {
+    return { data: null, error: true, message: error.message };
+  }
+}
+
 }
 
 module.exports = Usersmodel;

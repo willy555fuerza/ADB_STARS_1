@@ -1079,15 +1079,103 @@ const render = async (data) => {
 
 
 document.getElementById('imprimirtabla').addEventListener('click', async function (event){
-  console.log('click')
   event.preventDefault()
 
+  const startdate = document.getElementById("startdate").value;
+  const enddate = document.getElementById("enddate").value;
+  const currentDate = new Date();
+  // Crear una nueva fecha con el valor de startDat
+  function formatToTwoDigits(value) {
+    return value < 10 ? '0' + value : value;
+}
+
+// Crear la fecha actual formateada (YYYY-MM-DD)
+
+const formattedCurrentDate = currentDate.getFullYear() + '-' +
+                             formatToTwoDigits(currentDate.getMonth() + 1) + '-' +
+                             formatToTwoDigits(currentDate.getDate());
+
+// Validaciones con SweetAlert2
+if (startdate > formattedCurrentDate) {
+    Swal.fire({
+        icon: 'warning',
+        title: 'Fecha Inválida',
+        text: 'La fecha de inicio debe ser menor o igual a la fecha actual.'
+    });
+    return;
+}
+
+if (enddate > formattedCurrentDate) {
+    Swal.fire({
+        icon: 'warning',
+        title: 'Fecha Inválida',
+        text: 'La fecha final debe ser mayor o igual a la fecha actual.'
+    });
+    return;
+}
+
+if (startdate > enddate) {
+    Swal.fire({
+        icon: 'warning',
+        title: 'Fecha Inválida',
+        text: 'La fecha de inicio no debe ser mayor que la fecha final.'
+    });
+    return;
+}
+
+// Si pasa todas las validaciones
+Swal.fire({
+    icon: 'success',
+    title: 'Fechas Válidas',
+    text: 'Las fechas son válidas.'
+});
+
+  
   const token = obtenerTokenre(); 
+
+  if (startdate && enddate) {
+      try {
+        // Hacer la solicitud POST para descargar el PDF
+        const response = await fetch(`${baseURL}/download/fecha/egreso`, {
+            method: 'POST',
+            headers: {
+                Authorization: `Bearer ${token}`,
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ enddate, startdate }),
+        });
+
+        // Verificar si la respuesta no es correcta
+        if (!response.ok) {
+            const errorText = await response.text(); // Captura el texto de error
+            throw new Error(`Error en la solicitud: ${response.status} - ${errorText}`);
+        }
+
+        // Convertir la respuesta en un Blob
+        const blob = await response.blob();
+
+        // Crear un enlace temporal y disparar la descarga
+        const downloadUrl = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.style.display = 'none';
+        a.href = downloadUrl;
+        a.download = 'Recibo.pdf';
+        document.body.appendChild(a);
+        a.click();
+        window.URL.revokeObjectURL(downloadUrl);
+       
+    } catch (error) {
+        // Manejar cualquier error que ocurra durante la solicitud
+        console.error('Error:', error.message);
+        alert(`Error al generar el PDF: ${error.message}`);
+    }
+    return;
+  }
 
   const table = $('#myTable').DataTable();
   const datosTabla = table.data().toArray();
   console.log(datosTabla)
-
+  
   try {
     const response = await fetch(`${baseURL}/imprimirtabla`,{
       method: 'POST',
