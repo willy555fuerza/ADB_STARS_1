@@ -448,12 +448,7 @@ const getAllmiembroPromise = getAllmiembros();
                         <li class="elim"><a onclick="deleteUser(${id_ingreso})" class="dropdown-item " href="#">Eliminar</a></li>
                         <li><a onclick="changeState(${id_ingreso}, ${estado})" class="dropdown-item" href="#" id="change-state-${id_ingreso}">${estado ? "Inhabilitar" : "Habilitar"}</a></li>
                     </ul>
-                    
-                    <div class="btnn-group">
-                        <button type="button" onclick="descargarPDF(${id_ingreso})" class="btn btn-outline-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                            Imprimir
-                        </button>
-                    </div>
+                  
                 </div>
             </td>
         </tr>
