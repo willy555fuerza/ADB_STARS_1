@@ -141,7 +141,6 @@ router.post("/reportes_usuarios/usuarios", async (req, res) => {
           doc.lineWidth(1).roundedRect(tableX, yPosition-20, tableWidth, contentHeight+5, borde).fill('#031D35').stroke();
 
           doc.fontSize(12).fill('#ffffff')
-            .font(Arial)
             .text('Nº', 25, yPosition - 16)
             .text('Nombres', 90, yPosition - 16)
             .text('Apellidos', 200, yPosition - 16)
@@ -1055,17 +1054,17 @@ router.post("/reportes_ingresos/tipo_ingreso", async (req, res) => {
 
 
 
-router.post("/reportes_ingresos/tipo_ingreso", async (req, res) => {
-  const { fechade, fechaA, id_tipo_ingreso } = req.body;
+router.post("/reportes_egresos/tipo_egreso", async (req, res) => {
+  const { fechade, fechaA, id_tipo_egreso } = req.body;
 
   try {
     // Obtener datos de la base de datos
-    const result = await pdf.postingresoxtipoingreso(fechade, fechaA, id_tipo_ingreso);
+    const result = await pdf.postegresoxtipoegreso(fechade, fechaA, id_tipo_egreso);
     if (result.error) {   
       return res.status(404).send(result.message);
     }
     const data = result.data;
-    const date = data[0].tipo_ingreso_nombre;
+    const date = data[0].tipo_egreso_nombre;
 
     // Crear un nuevo documento PDF
     const doc = new PDFDocument({ layout: 'portrait', margin: 0 });
@@ -1087,8 +1086,8 @@ router.post("/reportes_ingresos/tipo_ingreso", async (req, res) => {
     const logoPath = path.join(__dirname, "../../../public/img/WILL.png");
 
     const headerText1 = 'IGLESIA ASAMBLEA DE DIOS BOLIVIANA';
-    const headerText2 = `Ingresos por tipo de ingreso`;
-    const headerText3 = `Tipo de ingreso: ${date}`;
+    const headerText2 = `Ingresos por tipo de egreso`;
+    const headerText3 = `Tipo de egreso: ${date}`;
     const headerText4 = `del ${fechade} a ${fechaA}`;
     const headerTextWidth1 = doc.widthOfString(headerText1);
     const headerTextWidth2 = doc.widthOfString(headerText2);
@@ -1171,9 +1170,9 @@ router.post("/reportes_ingresos/tipo_ingreso", async (req, res) => {
             doc.fontSize(12).fill('#ffffff')
               .font('Helvetica-Bold')
               .text('Nº', 25, yPosition - 16)
-              .text('Miembro', 170, yPosition - 16)
-              .text('Total_ingreso', 370, yPosition - 16)
-              .text('Contidad_ingreso', 470, yPosition - 16);
+              .text('Usuario', 170, yPosition - 16)
+              .text('Total_egreso', 370, yPosition - 16)
+              .text('Contidad_egreso', 470, yPosition - 16);
             
             numero++
         } 
@@ -1196,17 +1195,17 @@ router.post("/reportes_ingresos/tipo_ingreso", async (req, res) => {
           doc.fontSize(12).fill('#ffffff')
             .font('Helvetica-Bold')
             .text('Nº', 25, yPosition - 16)
-            .text('Miembro', 170, yPosition - 16)
-            .text('Total_ingreso', 370, yPosition - 16)
-            .text('Contidad_ingreso', 470, yPosition - 16);
+            .text('Usuario', 170, yPosition - 16)
+            .text('Total_egreso', 370, yPosition - 16)
+            .text('Contidad_egreso', 470, yPosition - 16);
           i = false
         }
           
         doc.fontSize(9).fill('#000000')
             .text(numero, 25, yPosition + 2)
-            .text(item.nombre_completo_miembro, -220, yPosition + 2, {align: 'center'})
-            .text(item.total_ingresos, 200, yPosition + 2, {align: 'center'})
-            .text(item.cantidad_ingresos, 440, yPosition + 2, {align: 'center'});
+            .text(item.nombre_completo_usuario, -220, yPosition + 2, {align: 'center'})
+            .text(item.total_egresos, 200, yPosition + 2, {align: 'center'})
+            .text(item.cantidad_egresos, 440, yPosition + 2, {align: 'center'});
 
         yPosition += rowHeight ;
         numero++

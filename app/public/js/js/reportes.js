@@ -684,7 +684,11 @@ document.getElementById('reporte_miembrosxministerio').addEventListener('submit'
     event.preventDefault()
   
     const fechade = document.getElementById("miembrosxministerio_fechade").value;
-    const fechaA = document.getElementById("miembrosxministerio_fechaA").value;
+    const hasta = document.getElementById("miembrosxministerio_fechaA").value;
+    let fechaobj = new Date(hasta)
+    fechaobj.setDate(fechaobj.getDate() + 1)
+    let nuevafecha = fechaobj.toISOString().split('T')[0]
+    let fechaA = nuevafecha
     const id_ministerio = document.getElementById("miembrosxministerio").value;
     const currentDate = new Date();
     // Crear una nueva fecha con el valor de startDat
