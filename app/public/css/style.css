@@ -5,7 +5,8 @@
     --light: #6C7293;
     --dark: #c5f6f7;
     --white:  #f7fdfd;
-    /* --dark: #f7fff7; */
+    
+     --dark: #f7fff7; 
 }
 
 .x_panel {
@@ -448,7 +449,7 @@ body * {
 
 .sidebar .navbar .navbar-nav .nav-link:hover,
 .sidebar .navbar .navbar-nav .nav-link.active {
-    color: #080a0a;
+    color: #dcfbfb;
     background: #F0FFFF         ;
     border-color: #F0FFFF ;
 }

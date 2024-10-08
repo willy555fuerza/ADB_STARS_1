@@ -465,7 +465,7 @@ router.post("/reportes_ministerios/ministerios", async (req, res) => {
               .font('Helvetica-Bold')
               .text('Nº', 25, yPosition - 16)
               .text('Nombre', 120, yPosition - 16)
-              .text('Descripcion', 280, yPosition - 16)
+              .text('Descripcion', 380, yPosition - 16)
               .text('Fecha_registro', 470, yPosition - 16);
               
             numero++
@@ -1086,7 +1086,7 @@ router.post("/reportes_egresos/tipo_egreso", async (req, res) => {
     const logoPath = path.join(__dirname, "../../../public/img/WILL.png");
 
     const headerText1 = 'IGLESIA ASAMBLEA DE DIOS BOLIVIANA';
-    const headerText2 = `Ingresos por tipo de egreso`;
+    const headerText2 = `Egresos por tipo de egreso`;
     const headerText3 = `Tipo de egreso: ${date}`;
     const headerText4 = `del ${fechade} a ${fechaA}`;
     const headerTextWidth1 = doc.widthOfString(headerText1);
@@ -1261,7 +1261,7 @@ router.post("/reportes_miembros/ministerios", async (req, res) => {
     const logoPath = path.join(__dirname, "../../../public/img/WILL.png");
 
     const headerText1 = 'IGLESIA ASAMBLEA DE DIOS BOLIVIANA';
-    const headerText2 = `Miembros por ministerio`;
+    const headerText2 = `Miembros por Ministerio`;
     const headerText3 = `Ministerio: ${date}`;
     const headerText4 = `del ${fechade} a ${fechaA}`;
     const headerTextWidth1 = doc.widthOfString(headerText1);
@@ -1345,7 +1345,7 @@ router.post("/reportes_miembros/ministerios", async (req, res) => {
             doc.fontSize(12).fill('#ffffff')
               .font('Helvetica-Bold')
               .text('Nº', 60, yPosition - 16)
-              .text('Total_egreso', 280, yPosition - 16)
+              .text('Total_Miembro por Ministerio', 280, yPosition - 16)
             
             numero++
         } 
@@ -1368,7 +1368,7 @@ router.post("/reportes_miembros/ministerios", async (req, res) => {
           doc.fontSize(12).fill('#ffffff')
             .font('Helvetica-Bold')
             .text('Nº', 60, yPosition - 16)
-            .text('Total_egreso', 280, yPosition - 16)
+            .text('Total_Miembros por  Ministerio', 210, yPosition - 16)
           i = false
         }
           

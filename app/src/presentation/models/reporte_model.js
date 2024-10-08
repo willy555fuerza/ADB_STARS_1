@@ -218,6 +218,18 @@ class UsersModel {
       if (!pool) {
         throw new Error("Error al conectar con PostgreSQL");
       }
+
+      // Verificar si el id_miembro existe
+    const verificarMiembroQuery = `
+    SELECT 1 FROM ingreso WHERE id_tipo_ingresos = ${id_tipo_ingreso};
+    `;
+    const verificarMiembroResult = await pool.query(verificarMiembroQuery);
+
+    // Si no existe el miembro, retornar un mensaje de error
+    if (verificarMiembroResult.rowCount === 0) {
+      await disconnectFromPostgres(pool);
+      return { error: true, message: `El miembro con ID ${id_tipo_ingreso} no existe.` };
+    }
       
       const query = `
 
@@ -303,6 +315,18 @@ class UsersModel {
       if (!pool) {
         throw new Error("Error al conectar con PostgreSQL");
       }
+
+       // Verificar si el id_miembro existe
+      const verificarMiembroQuery = `
+      SELECT 1 FROM lista WHERE id_ministerio = ${id_ministerio};
+      `;
+      const verificarMiembroResult = await pool.query(verificarMiembroQuery);
+
+      // Si no existe el miembro, retornar un mensaje de error
+      if (verificarMiembroResult.rowCount === 0) {
+        await disconnectFromPostgres(pool);
+        return { error: true, message: `El ministerio con ID ${id_ministerio} no tiene miembros registrados.` };
+      }
       
       const query = `
 
@@ -313,7 +337,7 @@ class UsersModel {
         JOIN miembro ON miembro.id_miembro = lista.id_miembro
         JOIN ministerio ON ministerio.id_ministerio = lista.id_ministerio
         WHERE lista.fecha_lista BETWEEN '${fechade}' AND '${fechaA}'
-            AND ministerio.id_ministerio = ${id_ministerio}
+            AND lista.id_ministerio = ${id_ministerio}
         ORDER BY nombre_completo_miembro DESC;
 
           `;

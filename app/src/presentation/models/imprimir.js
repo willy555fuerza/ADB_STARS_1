@@ -1,5 +1,5 @@
 /*****************conection 1*********************/
-/* 
+
 const { Pool } = require('pg');
 
 const pool = new Pool({
@@ -38,11 +38,11 @@ async function getAllventa(id_ingreso) {
 }
 
 module.exports = { getAllventa };
- */
+ 
 
-const {connectToPostgres,disconnectFromPostgres,} = require("../../infrastructure/database/db");
+ const {connectToPostgres,disconnectFromPostgres,} = require("../../infrastructure/database/db");
 
-class pdf{
+ class pdf{
   static async getAllvent(id_egreso) {
     try {
       const pool = await connectToPostgres();
@@ -121,8 +121,8 @@ ORDER BY ingreso.fecha_ingreso;
       return { error: true, message: 'Error al obtener datos del ingreso' };
     }
   }
-}
+} 
 
 
-module.exports = pdf;
+ module.exports = pdf;
 
