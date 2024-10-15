@@ -7923,6 +7923,10 @@ textarea.form-control-lg {
     background-color: #fff !important
 }
 
+.bg-zian {
+    background-color: #f0ffff !important
+}
+
 .bg-transparent {
     background-color: rgba(0, 0, 0, 0) !important
 }
