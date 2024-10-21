@@ -74,6 +74,187 @@ const obtenerToken = async () => {
 
 
 
+///////////////////////////77777  SELECTS   ///////////////////////////////////7
+
+const getAllTipoingresos = async () => {
+    try {
+      const token = obtenerTokenre();
+      const response = await fetch(`${baseURL}/tipo_ingreso`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        }
+      });
+  
+      if (!response.ok) {
+        throw new Error("Error en la solicitud");
+      }
+  
+      const result = await response.json();
+  
+      if (result.error) {
+        console.error("Error:", result.message);
+        return [];
+      } else {
+        return result.data;
+      }
+    } catch (error) {
+      console.error("Error:", error.message);
+      return [];
+    }
+  };
+
+  const getAllmiembro = async () => {
+    try {
+        const token = obtenerTokenre();
+        const response = await fetch(`${baseURL}/miembro`, {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            }
+        });
+        if (!response.ok) {
+            throw new Error("Error en la solicitud");
+        }
+        const result = await response.json();
+        //console.log(result);
+  
+        if (result.error) {
+            console.error("Error:", result.message);
+            return [];
+        } else {
+            return result.data;
+        }
+    } catch (error) {
+        console.error("Error:", error.message);
+        return [];
+    }
+  };
+
+  const getAllTipoegresos = async () => {
+    try {
+      const token = obtenerTokenre();
+      const response = await fetch(`${baseURL}/tipo_egreso`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        }
+      });
+  
+      if (!response.ok) {
+        throw new Error("Error en la solicitud");
+      }
+  
+      const result = await response.json();
+  
+      if (result.error) {
+        console.error("Error:", result.message);
+        return [];
+      } else {
+        return result.data;
+      }
+    } catch (error) {
+      console.error("Error:", error.message);
+      return [];
+    }
+  };
+
+  const getAllUsuario = async () => {
+    try {
+        const token = obtenerTokenre();
+        const response = await fetch(`${baseURL}/Users`, {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            }
+        });
+        if (!response.ok) {
+            throw new Error("Error en la solicitud");
+        }
+        const result = await response.json();
+  
+        if (result.error) {
+            console.error("Error:", result.message);
+            return [];
+        } else {
+            return result.data;
+        }
+    } catch (error) {
+        console.error("Error:", error.message);
+        return [];
+    }
+  };
+
+  const getAllMeasures = async () => {
+    try {
+      // Verificar si el token está presente en el localStorage
+      const token = obtenerTokenre();
+      const response = await fetch(`${baseURL}/ministerio`,{
+        headers:{
+          Authorization: `Bearer ${token}`,
+        }
+      });
+      if (!response.ok) {
+        throw new Error("Error en la solicitud");
+      }
+      const result = await response.json();
+      //console.log(result.data)
+      if (result.error) {
+        console.error("Error:", result.message);
+        return [];
+      } else {
+        return result.data;
+      }
+    } catch (error) {
+      console.error("Error:", error.message);
+      return [];
+    }
+  };
+
+  // Función para poblar selectores
+const populateSelect = (selectElement, options, valueFieldName, textFieldName) => {
+    selectElement.innerHTML = '<option value="" >Seleccione una opción</option>';
+    options.forEach(option => {
+        const optionElement = document.createElement("option");
+        optionElement.value = option[valueFieldName];
+        optionElement.textContent = option[textFieldName];
+        selectElement.appendChild(optionElement);
+    });
+  };
+  
+  
+  // Función para poblar los selectores del formulario
+  const populateFormSelects = async () => {
+    const usuarioSelect = document.getElementById("ingreso_usuario");
+    const tipo_ingresoSelect = document.getElementById("ingreso_tipo_ingreso");
+    const miembroSelect = document.getElementById("ingreso_miembro");
+    const tipo_egresoSelect = document.getElementById("egreso_tipo_egreso");
+    const ministerioSelect = document.getElementById("miembrosxministerio");
+   
+    const usuario = await getAllUsuario(); 
+    const tipo_ingreso = await getAllTipoingresos();
+    const miembro = await getAllmiembro();
+    const tipo_egreso = await getAllTipoegresos();
+    const ministerios = await getAllTipoegresos();
+  
+    populateSelect(usuarioSelect, usuario, "id_usuario", "nombres");
+    populateSelect(tipo_ingresoSelect, tipo_ingreso, "id_tipo_ingresos", "nombre");
+    populateSelect(miembroSelect, miembro, "id_miembro", "nombres");
+    populateSelect(tipo_egresoSelect, tipo_egreso, "id_tipo_egresos", "nombre");
+    populateSelect(ministerioSelect, ministerios, "id_ministerio", "nombre");
+  
+    // Inicializa Select2 en los selectores después de haber poblado las opciones
+    $(document).ready(function() {
+        $('#ingreso_usuario').select2();
+        $('#ingreso_tipo_ingreso').select2();
+        $('#ingreso_miembro').select2();
+        $('#egreso_tipo_egreso').select2();
+        $('#miembrosxministerio').select2();
+    });
+  };
+  
+  // Llama a la función para poblar los selectores del formulario
+  populateFormSelects();
+
+///////////////////////////77777  SELECTS   ///////////////////////////////////7
+
+
 // Función para descargar el PDF Reportes: Usuarios registrados
 document.getElementById('reporte_usuarios').addEventListener('submit', async function (event){
   event.preventDefault()
