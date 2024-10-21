@@ -231,7 +231,7 @@ const populateSelect = (selectElement, options, valueFieldName, textFieldName) =
     const tipo_ingreso = await getAllTipoingresos();
     const miembro = await getAllmiembro();
     const tipo_egreso = await getAllTipoegresos();
-    const ministerios = await getAllTipoegresos();
+    const ministerios = await getAllMeasures();
   
     populateSelect(usuarioSelect, usuario, "id_usuario", "nombres");
     populateSelect(tipo_ingresoSelect, tipo_ingreso, "id_tipo_ingresos", "nombre");
