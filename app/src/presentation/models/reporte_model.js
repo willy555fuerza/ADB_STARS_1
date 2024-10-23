@@ -228,7 +228,7 @@ class UsersModel {
     // Si no existe el miembro, retornar un mensaje de error
     if (verificarMiembroResult.rowCount === 0) {
       await disconnectFromPostgres(pool);
-      return { error: true, message: `El miembro con ID ${id_tipo_ingreso} no existe.` };
+      return { error: true, message: `El ingreso con ID ${id_tipo_ingreso} no existe.` };
     }
       
       const query = `
@@ -241,7 +241,7 @@ class UsersModel {
           FROM ingreso
           JOIN tipo_ingreso ON ingreso.id_tipo_ingresos = tipo_ingreso.id_tipo_ingresos
           JOIN miembro ON ingreso.id_miembro = miembro.id_miembro
-          WHERE ingreso.fecha_registro BETWEEN '${fechade}' AND '${fechaA}'
+          WHERE ingreso.fecha_ingreso BETWEEN '${fechade}' AND '${fechaA}'
               AND tipo_ingreso.id_tipo_ingresos = ${id_tipo_ingreso}
           GROUP BY tipo_ingreso.nombre, miembro.nombres, miembro.apellidos
           ORDER BY total_ingresos DESC;
@@ -285,7 +285,7 @@ class UsersModel {
           FROM egreso
           JOIN tipo_egreso ON egreso.id_tipo_egresos = tipo_egreso.id_tipo_egresos
           JOIN usuario ON egreso.id_usuario = usuario.id_usuario
-          WHERE egreso.fecha_registro BETWEEN '${fechade}' AND '${fechaA}'
+          WHERE egreso.fecha_egreso BETWEEN '${fechade}' AND '${fechaA}'
             AND egreso.id_tipo_egresos = ${id_tipo_egreso} 
           GROUP BY tipo_egreso.nombre,nombre_completo_usuario
           ORDER BY total_egresos DESC;

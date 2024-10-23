@@ -36,7 +36,7 @@ router.post("/reportes_usuarios/usuarios", async (req, res) => {
     const logoPath = path.join(__dirname, "../../../public/img/WILL.png");
 
     const headerText1 = 'IGLESIA ASAMBLEA DE DIOS BOLIVIANA';
-    const headerText2 = `Usuarios registrados`;
+    const headerText2 = `USUARIOS REGISTRADOS`;
     const headerText3 = `del ${fechade} a ${fechaA}`;
     const headerTextWidth1 = doc.widthOfString(headerText1);
     const headerTextWidth2 = doc.widthOfString(headerText2);
@@ -210,7 +210,7 @@ router.post("/reportes_miembros/miembros", async (req, res) => {
     const logoPath = path.join(__dirname, "../../../public/img/WILL.png");
 
     const headerText1 = 'IGLESIA ASAMBLEA DE DIOS BOLIVIANA';
-    const headerText2 = `Miembros registrados`;
+    const headerText2 = `MIEMBROS REGISTRADOS`;
     const headerText3 = `del ${fechade} a ${fechaA}`;
     const headerTextWidth1 = doc.widthOfString(headerText1);
     const headerTextWidth2 = doc.widthOfString(headerText2);
@@ -384,7 +384,7 @@ router.post("/reportes_ministerios/ministerios", async (req, res) => {
     const logoPath = path.join(__dirname, "../../../public/img/WILL.png");
 
     const headerText1 = 'IGLESIA ASAMBLEA DE DIOS BOLIVIANA';
-    const headerText2 = `Ministerios registrados`;
+    const headerText2 = `MINISTERIOS REGISTRADOS`;
     const headerText3 = `del ${fechade} a ${fechaA}`;
     const headerTextWidth1 = doc.widthOfString(headerText1);
     const headerTextWidth2 = doc.widthOfString(headerText2);
@@ -401,7 +401,7 @@ router.post("/reportes_ministerios/ministerios", async (req, res) => {
       doc.fontSize(15).fill('#000000').font('Helvetica-Bold')
          .text(headerText1, 160, headerTextY)
          .moveDown(1)
-         .fontSize(12).text(headerText2,headerTextX2)
+         .fontSize(14).text(headerText2,headerTextX2)
          .fontSize(12).text(headerText3,headerTextX3);
       // Añadir la fecha en la parte superior derecha
      doc.fontSize(8)
@@ -465,7 +465,7 @@ router.post("/reportes_ministerios/ministerios", async (req, res) => {
               .font('Helvetica-Bold')
               .text('Nº', 25, yPosition - 16)
               .text('Nombre', 120, yPosition - 16)
-              .text('Descripcion', 380, yPosition - 16)
+              .text('Descripcion', 280, yPosition - 16)
               .text('Fecha_registro', 470, yPosition - 16);
               
             numero++
@@ -556,7 +556,7 @@ router.post("/reportes_ingresos/usuarios", async (req, res) => {
     const logoPath = path.join(__dirname, "../../../public/img/WILL.png");
 
     const headerText1 = 'IGLESIA ASAMBLEA DE DIOS BOLIVIANA';
-    const headerText2 = `Ingresos por usuario`;
+    const headerText2 = `INGRESOS POR USUARIO`;
     const headerText3 = `Usuario: ${date}`;
     const headerText4 = `del ${fechade} a ${fechaA}`;
     const headerTextWidth1 = doc.widthOfString(headerText1);
@@ -735,7 +735,7 @@ router.post("/reportes_ingresos/miembros", async (req, res) => {
     const logoPath = path.join(__dirname, "../../../public/img/WILL.png");
 
     const headerText1 = 'IGLESIA ASAMBLEA DE DIOS BOLIVIANA';
-    const headerText2 = `Ingresos por miembro`;
+    const headerText2 = `INGRESOS POR MIEMBRO`;
     const headerText3 = `Miembro: ${date}`;
     const headerText4 = `del ${fechade} a ${fechaA}`;
     const headerTextWidth1 = doc.widthOfString(headerText1);
@@ -911,7 +911,7 @@ router.post("/reportes_ingresos/tipo_ingreso", async (req, res) => {
     const logoPath = path.join(__dirname, "../../../public/img/WILL.png");
 
     const headerText1 = 'IGLESIA ASAMBLEA DE DIOS BOLIVIANA';
-    const headerText2 = `Ingresos por tipo de ingreso`;
+    const headerText2 = `INGRESOS POR TIPO DE INGRESO`;
     const headerText3 = `Tipo de ingreso: ${date}`;
     const headerText4 = `del ${fechade} a ${fechaA}`;
     const headerTextWidth1 = doc.widthOfString(headerText1);
@@ -1086,7 +1086,7 @@ router.post("/reportes_egresos/tipo_egreso", async (req, res) => {
     const logoPath = path.join(__dirname, "../../../public/img/WILL.png");
 
     const headerText1 = 'IGLESIA ASAMBLEA DE DIOS BOLIVIANA';
-    const headerText2 = `Egresos por tipo de egreso`;
+    const headerText2 = `EGRESOS POR TIPO DE EGRESO`;
     const headerText3 = `Tipo de egreso: ${date}`;
     const headerText4 = `del ${fechade} a ${fechaA}`;
     const headerTextWidth1 = doc.widthOfString(headerText1);
@@ -1261,7 +1261,7 @@ router.post("/reportes_miembros/ministerios", async (req, res) => {
     const logoPath = path.join(__dirname, "../../../public/img/WILL.png");
 
     const headerText1 = 'IGLESIA ASAMBLEA DE DIOS BOLIVIANA';
-    const headerText2 = `Miembros por Ministerio`;
+    const headerText2 = `MIEMBROS POR MINISTERIOS`;
     const headerText3 = `Ministerio: ${date}`;
     const headerText4 = `del ${fechade} a ${fechaA}`;
     const headerTextWidth1 = doc.widthOfString(headerText1);
@@ -1281,7 +1281,7 @@ router.post("/reportes_miembros/ministerios", async (req, res) => {
       doc.fontSize(15).fill('#000000').font('Helvetica-Bold')
          .text(headerText1, 160, headerTextY)
          .moveDown(1)
-         .fontSize(12).text(headerText2,headerTextX2)
+         .fontSize(14).text(headerText2,headerTextX2)
          .fontSize(12).text(headerText3,headerTextX3)
          .fontSize(12).text(headerText4,headerTextX4);
       // Añadir la fecha en la parte superior derecha
@@ -1430,7 +1430,7 @@ router.post("/reportes_egreso", async (req, res) => {
     const logoPath = path.join(__dirname, "../../../public/img/WILL.png");
 
     const headerText1 = 'IGLESIA ASAMBLEA DE DIOS BOLIVIANA';
-    const headerText2 = `Detalles de egresos`;
+    const headerText2 = `DETALLES DE EGRESO`;
     //const headerText3 = `Ministerio: ${date}`;
     const headerText4 = `del ${fechade} a ${fechaA}`;
     const headerTextWidth1 = doc.widthOfString(headerText1);
@@ -1613,7 +1613,7 @@ router.post("/reportes_ingreso", async (req, res) => {
     const logoPath = path.join(__dirname, "../../../public/img/WILL.png");
 
     const headerText1 = 'IGLESIA ASAMBLEA DE DIOS BOLIVIANA';
-    const headerText2 = `Detalles de ingresos`;
+    const headerText2 = `DETALLES DE INGRESOS`;
     //const headerText3 = `Ministerio: ${date}`;
     const headerText4 = `del ${fechade} a ${fechaA}`;
     const headerTextWidth1 = doc.widthOfString(headerText1);
