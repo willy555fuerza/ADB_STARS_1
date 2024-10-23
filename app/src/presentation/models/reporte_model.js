@@ -184,7 +184,7 @@ class UsersModel {
           FROM ingreso
           JOIN tipo_ingreso ON ingreso.id_tipo_ingresos = tipo_ingreso.id_tipo_ingresos
           JOIN miembro ON ingreso.id_miembro = miembro.id_miembro
-          WHERE ingreso.fecha_registro BETWEEN '${fechade}' AND '${fechaA}'
+          WHERE ingreso.fecha_ingreso BETWEEN '${fechade}' AND '${fechaA}'
             AND miembro.id_miembro = ${id_miembro} 
           GROUP BY miembro.id_miembro, miembro_nombre_completo, tipo_ingreso.nombre
           ORDER BY total_ingresos DESC;
