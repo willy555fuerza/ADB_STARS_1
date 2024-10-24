@@ -49,6 +49,8 @@ app.use(express.static(path.join(__dirname, 'app/public/lib')));
 app.use(express.static(path.join(__dirname, 'app/public/scss')));
 app.use(express.static(path.join(__dirname, 'app/src/shared/constants')))
 app.use(express.static(path.join(__dirname, 'app/public/scss')));
+app.use(express.static(path.join(__dirname, 'app/public/font')));
+
 
 // Servir archivos CSS desde node_modules
 app.use('/flaticon', express.static(path.join(__dirname, 'node_modules/@flaticon/flaticon-uicons/css')));

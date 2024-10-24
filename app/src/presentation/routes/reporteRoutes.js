@@ -27,6 +27,9 @@ router.post("/reportes_usuarios/usuarios", async (req, res) => {
 
     // Enviar el documento PDF al cliente
     doc.pipe(res);
+    const fontpath = path.join(__dirname,"../../../public/font/Arial.ttf")
+
+    doc.registerFont('Arial', fontpath)
 
     // Obtener la fecha actual y formatearla como DD/MM/YYYY
     const currentDate = new Date();
@@ -50,11 +53,18 @@ router.post("/reportes_usuarios/usuarios", async (req, res) => {
     const addHeader = () => {
       doc.image(logoPath, 30, 30, { width: 100 });
         
-      doc.fontSize(15).fill('#000000').font('Helvetica-Bold')
+      /* doc.fontSize(15).fill('#000000').font('Helvetica-Bold')
          .text(headerText1, 160, headerTextY)
          .moveDown(1)
-         .fontSize(12).text(headerText2,headerTextX2)
-         .fontSize(12).text(headerText3,headerTextX3);
+         .fontSize(12).font('Arial').text(headerText2,headerTextX2)
+         .fontSize(12).text(headerText3,headerTextX3); */
+
+        doc.fontSize(15).fill('#000000').font('Helvetica-Bold')
+        .text(headerText1, 160, headerTextY)
+        .moveDown(1)
+        .fontSize(12).font('Helvetica-Bold').text(headerText2,headerTextX2) // Aplicando negritas a "USUARIOS REGISTRADOS"
+        .fontSize(12).font('Arial').text(headerText3,headerTextX3);
+
       // Añadir la fecha en la parte superior derecha
      doc.fontSize(8)
         .text(formattedDate, doc.page.width - 80, 30);
@@ -202,6 +212,10 @@ router.post("/reportes_miembros/miembros", async (req, res) => {
     // Enviar el documento PDF al cliente
     doc.pipe(res);
 
+    const fontpath = path.join(__dirname,"../../../public/font/Arial.ttf")
+
+    doc.registerFont('Arial', fontpath)
+
     // Obtener la fecha actual y formatearla como DD/MM/YYYY
     const currentDate = new Date();
     const formattedDate = `${String(currentDate.getDate()).padStart(2, '0')}/${String(currentDate.getMonth() + 1).padStart(2, '0')}/${currentDate.getFullYear()}`;
@@ -225,10 +239,15 @@ router.post("/reportes_miembros/miembros", async (req, res) => {
       doc.image(logoPath, 30, 30, { width: 100 });
         
       doc.fontSize(15).fill('#000000').font('Helvetica-Bold')
-         .text(headerText1, 160, headerTextY)
+         /* .text(headerText1, 160, headerTextY)
          .moveDown(1)
          .fontSize(12).text(headerText2,headerTextX2)
-         .fontSize(12).text(headerText3,headerTextX3);
+         .fontSize(12).text(headerText3,headerTextX3); */
+         doc.fontSize(15).fill('#000000').font('Helvetica-Bold')
+         .text(headerText1, 160, headerTextY)
+         .moveDown(1)
+         .fontSize(12).font('Helvetica-Bold').text(headerText2,headerTextX2) // Aplicando negritas a "USUARIOS REGISTRADOS"
+         .fontSize(12).font('Arial').text(headerText3,headerTextX3);
       // Añadir la fecha en la parte superior derecha
      doc.fontSize(8)
         .text(formattedDate, doc.page.width - 80, 30);
@@ -326,6 +345,7 @@ router.post("/reportes_miembros/miembros", async (req, res) => {
         }
           
         doc.fontSize(9).fill('#000000')
+            .font('Arial')
             .text(numero, 25, yPosition + 2)
             .text(item.nombres, -390, yPosition + 2, {align: 'center'})
             .text(item.apellidos, -170, yPosition + 2, {align: 'center'})
@@ -375,6 +395,10 @@ router.post("/reportes_ministerios/ministerios", async (req, res) => {
 
     // Enviar el documento PDF al cliente
     doc.pipe(res);
+    const fontpath = path.join(__dirname,"../../../public/font/Arial.ttf")
+
+    doc.registerFont('Arial', fontpath)
+
 
     // Obtener la fecha actual y formatearla como DD/MM/YYYY
     const currentDate = new Date();
@@ -399,10 +423,15 @@ router.post("/reportes_ministerios/ministerios", async (req, res) => {
       doc.image(logoPath, 30, 30, { width: 100 });
         
       doc.fontSize(15).fill('#000000').font('Helvetica-Bold')
-         .text(headerText1, 160, headerTextY)
+         /* .text(headerText1, 160, headerTextY)
          .moveDown(1)
          .fontSize(14).text(headerText2,headerTextX2)
-         .fontSize(12).text(headerText3,headerTextX3);
+         .fontSize(12).text(headerText3,headerTextX3); */
+         doc.fontSize(15).fill('#000000').font('Helvetica-Bold')
+         .text(headerText1, 160, headerTextY)
+         .moveDown(1)
+         .fontSize(12).font('Helvetica-Bold').text(headerText2,headerTextX2) // Aplicando negritas a "USUARIOS REGISTRADOS"
+         .fontSize(12).font('Arial').text(headerText3,headerTextX3);
       // Añadir la fecha en la parte superior derecha
      doc.fontSize(8)
         .text(formattedDate, doc.page.width - 80, 30);
@@ -496,6 +525,7 @@ router.post("/reportes_ministerios/ministerios", async (req, res) => {
         }
           
         doc.fontSize(9).fill('#000000')
+            .font('Arial')  
             .text(numero, 25, yPosition + 2)
             .text(item.nombre, -330, yPosition + 2, {align: 'center'})
             .text(item.descripcion, 15, yPosition + 2, {align: 'center'})
@@ -547,6 +577,9 @@ router.post("/reportes_ingresos/usuarios", async (req, res) => {
 
     // Enviar el documento PDF al cliente
     doc.pipe(res);
+    const fontpath = path.join(__dirname,"../../../public/font/Arial.ttf")
+
+    doc.registerFont('Arial', fontpath)
 
     // Obtener la fecha actual y formatearla como DD/MM/YYYY
     const currentDate = new Date();
@@ -573,12 +606,17 @@ router.post("/reportes_ingresos/usuarios", async (req, res) => {
     const addHeader = () => {
       doc.image(logoPath, 30, 30, { width: 100 });
         
-      doc.fontSize(15).fill('#000000').font('Helvetica-Bold')
-         .text(headerText1, 160, headerTextY)
+     /*  doc.fontSize(15).fill('#000000').font('Helvetica-Bold') */
+         /* .text(headerText1, 160, headerTextY)
          .moveDown(1)
          .fontSize(12).text(headerText2,headerTextX2)
          .fontSize(12).text(headerText3,headerTextX3)
-         .fontSize(12).text(headerText4,headerTextX4);
+         .fontSize(12).text(headerText4,headerTextX4); */
+         doc.fontSize(15).fill('#000000').font('Helvetica-Bold')
+         .text(headerText1, 160, headerTextY)
+         .moveDown(1)
+         .fontSize(12).font('Helvetica-Bold').text(headerText2,headerTextX2) // Aplicando negritas a "USUARIOS REGISTRADOS"
+         .fontSize(12).font('Arial').text(headerText3,headerTextX3);
       // Añadir la fecha en la parte superior derecha
      doc.fontSize(8)
         .text(formattedDate, doc.page.width - 80, 30);
@@ -674,6 +712,7 @@ router.post("/reportes_ingresos/usuarios", async (req, res) => {
         }
           
         doc.fontSize(9).fill('#000000')
+            .font('Arial')
             .text(numero, 25, yPosition + 2)
             .text(item.tipo_ingreso_nombre, -380, yPosition + 2, {align: 'center'})
             .text(item.miembro_nombre_completo, -105, yPosition + 2, {align: 'center'})
@@ -726,6 +765,9 @@ router.post("/reportes_ingresos/miembros", async (req, res) => {
 
     // Enviar el documento PDF al cliente
     doc.pipe(res);
+    const fontpath = path.join(__dirname,"../../../public/font/Arial.ttf")
+
+    doc.registerFont('Arial', fontpath)
 
     // Obtener la fecha actual y formatearla como DD/MM/YYYY
     const currentDate = new Date();
@@ -752,12 +794,17 @@ router.post("/reportes_ingresos/miembros", async (req, res) => {
     const addHeader = () => {
       doc.image(logoPath, 30, 30, { width: 100 });
         
-      doc.fontSize(15).fill('#000000').font('Helvetica-Bold')
-         .text(headerText1, 160, headerTextY)
+     /*  doc.fontSize(15).fill('#000000').font('Helvetica-Bold') */
+         /* .text(headerText1, 160, headerTextY)
          .moveDown(1)
          .fontSize(12).text(headerText2,headerTextX2)
          .fontSize(12).text(headerText3,headerTextX3)
-         .fontSize(12).text(headerText4,headerTextX4);
+         .fontSize(12).text(headerText4,headerTextX4); */
+         doc.fontSize(15).fill('#000000').font('Helvetica-Bold')
+         .text(headerText1, 160, headerTextY)
+         .moveDown(1)
+         .fontSize(12).font('Helvetica-Bold').text(headerText2,headerTextX2) // Aplicando negritas a "USUARIOS REGISTRADOS"
+         .fontSize(12).font('Arial').text(headerText3,headerTextX3);
       // Añadir la fecha en la parte superior derecha
      doc.fontSize(8)
         .text(formattedDate, doc.page.width - 80, 30);
@@ -851,6 +898,7 @@ router.post("/reportes_ingresos/miembros", async (req, res) => {
         }
           
         doc.fontSize(9).fill('#000000')
+            .font('Arial')
             .text(numero, 25, yPosition + 2)
             .text(item.tipo_ingreso_nombre, -220, yPosition + 2, {align: 'center'})
             .text(item.total_ingresos, 200, yPosition + 2, {align: 'center'})
@@ -902,6 +950,9 @@ router.post("/reportes_ingresos/tipo_ingreso", async (req, res) => {
 
     // Enviar el documento PDF al cliente
     doc.pipe(res);
+    const fontpath = path.join(__dirname,"../../../public/font/Arial.ttf")
+
+    doc.registerFont('Arial', fontpath)
 
     // Obtener la fecha actual y formatearla como DD/MM/YYYY
     const currentDate = new Date();
@@ -928,12 +979,17 @@ router.post("/reportes_ingresos/tipo_ingreso", async (req, res) => {
     const addHeader = () => {
       doc.image(logoPath, 30, 30, { width: 100 });
         
-      doc.fontSize(15).fill('#000000').font('Helvetica-Bold')
+      /* doc.fontSize(15).fill('#000000').font('Helvetica-Bold')
          .text(headerText1, 160, headerTextY)
          .moveDown(1)
          .fontSize(12).text(headerText2,headerTextX2)
          .fontSize(12).text(headerText3,headerTextX3)
-         .fontSize(12).text(headerText4,headerTextX4);
+         .fontSize(12).text(headerText4,headerTextX4); */
+         doc.fontSize(15).fill('#000000').font('Helvetica-Bold')
+         .text(headerText1, 160, headerTextY)
+         .moveDown(1)
+         .fontSize(12).font('Helvetica-Bold').text(headerText2,headerTextX2) // Aplicando negritas a "USUARIOS REGISTRADOS"
+         .fontSize(12).font('Arial').text(headerText3,headerTextX3);
       // Añadir la fecha en la parte superior derecha
      doc.fontSize(8)
         .text(formattedDate, doc.page.width - 80, 30);
@@ -1027,6 +1083,7 @@ router.post("/reportes_ingresos/tipo_ingreso", async (req, res) => {
         }
           
         doc.fontSize(9).fill('#000000')
+            .font('Arial')
             .text(numero, 25, yPosition + 2)
             .text(item.nombre_completo_miembro, -220, yPosition + 2, {align: 'center'})
             .text(item.total_ingresos, 200, yPosition + 2, {align: 'center'})
@@ -1077,6 +1134,9 @@ router.post("/reportes_egresos/tipo_egreso", async (req, res) => {
 
     // Enviar el documento PDF al cliente
     doc.pipe(res);
+    const fontpath = path.join(__dirname,"../../../public/font/Arial.ttf")
+
+    doc.registerFont('Arial', fontpath)
 
     // Obtener la fecha actual y formatearla como DD/MM/YYYY
     const currentDate = new Date();
@@ -1103,12 +1163,17 @@ router.post("/reportes_egresos/tipo_egreso", async (req, res) => {
     const addHeader = () => {
       doc.image(logoPath, 30, 30, { width: 100 });
         
-      doc.fontSize(15).fill('#000000').font('Helvetica-Bold')
+      /* doc.fontSize(15).fill('#000000').font('Helvetica-Bold')
          .text(headerText1, 160, headerTextY)
          .moveDown(1)
          .fontSize(12).text(headerText2,headerTextX2)
          .fontSize(12).text(headerText3,headerTextX3)
-         .fontSize(12).text(headerText4,headerTextX4);
+         .fontSize(12).text(headerText4,headerTextX4); */
+         doc.fontSize(15).fill('#000000').font('Helvetica-Bold')
+         .text(headerText1, 160, headerTextY)
+         .moveDown(1)
+         .fontSize(12).font('Helvetica-Bold').text(headerText2,headerTextX2) // Aplicando negritas a "USUARIOS REGISTRADOS"
+         .fontSize(12).font('Arial').text(headerText3,headerTextX3);
       // Añadir la fecha en la parte superior derecha
      doc.fontSize(8)
         .text(formattedDate, doc.page.width - 80, 30);
@@ -1202,6 +1267,7 @@ router.post("/reportes_egresos/tipo_egreso", async (req, res) => {
         }
           
         doc.fontSize(9).fill('#000000')
+            .font('Arial')
             .text(numero, 25, yPosition + 2)
             .text(item.nombre_completo_usuario, -220, yPosition + 2, {align: 'center'})
             .text(item.total_egresos, 200, yPosition + 2, {align: 'center'})
@@ -1252,6 +1318,9 @@ router.post("/reportes_miembros/ministerios", async (req, res) => {
 
     // Enviar el documento PDF al cliente
     doc.pipe(res);
+    const fontpath = path.join(__dirname,"../../../public/font/Arial.ttf")
+
+    doc.registerFont('Arial', fontpath)
 
     // Obtener la fecha actual y formatearla como DD/MM/YYYY
     const currentDate = new Date();
@@ -1279,11 +1348,10 @@ router.post("/reportes_miembros/ministerios", async (req, res) => {
       doc.image(logoPath, 30, 30, { width: 100 });
         
       doc.fontSize(15).fill('#000000').font('Helvetica-Bold')
-         .text(headerText1, 160, headerTextY)
-         .moveDown(1)
-         .fontSize(14).text(headerText2,headerTextX2)
-         .fontSize(12).text(headerText3,headerTextX3)
-         .fontSize(12).text(headerText4,headerTextX4);
+      .text(headerText1, 160, headerTextY)
+      .moveDown(1)
+      .fontSize(12).font('Helvetica-Bold').text(headerText2,headerTextX2) // Aplicando negritas a "USUARIOS REGISTRADOS"
+      .fontSize(12).font('Arial').text(headerText3,headerTextX3);
       // Añadir la fecha en la parte superior derecha
      doc.fontSize(8)
         .text(formattedDate, doc.page.width - 80, 30);
@@ -1331,15 +1399,15 @@ router.post("/reportes_miembros/ministerios", async (req, res) => {
               if (totalRows % maxRowsPerPage === 0) {
                   // Si el número total de registros es múltiplo de maxRowsPerPage, la última página está llena
                   registrosUltimaPagina = maxRowsPerPage;
-                  doc.lineWidth(1).roundedRect(tableX+30, yPosition-20, tableWidth-75,(registrosUltimaPagina * rowHeight) + 20,borde).stroke();
+                  doc.lineWidth(1).roundedRect(tableX, yPosition-20, tableWidth,(registrosUltimaPagina * rowHeight) + 20,borde).stroke();
               } else {
                   // Si no, el número de registros en la última página es el resto de la división
                   registrosUltimaPagina = totalRows % maxRowsPerPage;
-                  doc.lineWidth(1).roundedRect(tableX+30, yPosition-20, tableWidth-75,(registrosUltimaPagina * rowHeight) + 20,borde).stroke();
+                  doc.lineWidth(1).roundedRect(tableX, yPosition-20, tableWidth,(registrosUltimaPagina * rowHeight) + 20,borde).stroke();
               }
               e = false
             }
-            doc.lineWidth(1).roundedRect(tableX+30, yPosition-20, tableWidth-75, contentHeight+5, borde).fill('#031D35').stroke();
+            doc.lineWidth(1).roundedRect(tableX, yPosition-20, tableWidth, contentHeight+5, borde).fill('#031D35').stroke();
 
 
             doc.fontSize(12).fill('#ffffff')
@@ -1372,7 +1440,8 @@ router.post("/reportes_miembros/ministerios", async (req, res) => {
           i = false
         }
           
-        doc.fontSize(12).fill('#000000')
+        doc.fontSize(9).fill('#000000')
+            .font('Arial')
             .text(numero, 60, yPosition + 2)
             .text(item.nombre_completo_miembro, 10, yPosition + 2, {align: 'center'})
 
@@ -1421,6 +1490,9 @@ router.post("/reportes_egreso", async (req, res) => {
 
     // Enviar el documento PDF al cliente
     doc.pipe(res);
+    const fontpath = path.join(__dirname,"../../../public/font/Arial.ttf")
+
+    doc.registerFont('Arial', fontpath)
 
     // Obtener la fecha actual y formatearla como DD/MM/YYYY
     const currentDate = new Date();
@@ -1447,12 +1519,18 @@ router.post("/reportes_egreso", async (req, res) => {
     const addHeader = () => {
       doc.image(logoPath, 30, 30, { width: 100 });
         
-      doc.fontSize(15).fill('#000000').font('Helvetica-Bold')
+     /*  doc.fontSize(15).fill('#000000').font('Helvetica-Bold')
          .text(headerText1, 160, headerTextY)
          .moveDown(1)
          .fontSize(12).text(headerText2,headerTextX2)
          //.fontSize(12).text(headerText3,headerTextX3)
-         .fontSize(12).text(headerText4,headerTextX4);
+         .fontSize(12).text(headerText4,headerTextX4); */
+         doc.fontSize(15).fill('#000000').font('Helvetica-Bold')
+   .text(headerText1, 160, headerTextY)
+   .moveDown(1)
+   .fontSize(12).text(headerText2,headerTextX2) 
+   .fontSize(12).font('Arial').text(headerText4,headerTextX4); // Aplicando negritas a "DETALLES DE INGRESO"
+
       // Añadir la fecha en la parte superior derecha
      doc.fontSize(8)
         .text(formattedDate, doc.page.width - 80, 30);
@@ -1500,15 +1578,15 @@ router.post("/reportes_egreso", async (req, res) => {
               if (totalRows % maxRowsPerPage === 0) {
                   // Si el número total de registros es múltiplo de maxRowsPerPage, la última página está llena
                   registrosUltimaPagina = maxRowsPerPage;
-                  doc.lineWidth(1).roundedRect(tableX+30, yPosition-20, tableWidth-75,(registrosUltimaPagina * rowHeight) + 20,borde).stroke();
+                  doc.lineWidth(1).roundedRect(tableX, yPosition-20, tableWidth,(registrosUltimaPagina * rowHeight) + 20,borde).stroke();
               } else {
                   // Si no, el número de registros en la última página es el resto de la división
                   registrosUltimaPagina = totalRows % maxRowsPerPage;
-                  doc.lineWidth(1).roundedRect(tableX+30, yPosition-20, tableWidth-75,(registrosUltimaPagina * rowHeight) + 20,borde).stroke();
+                  doc.lineWidth(1).roundedRect(tableX, yPosition-20, tableWidth,(registrosUltimaPagina * rowHeight) + 20,borde).stroke();
               }
               e = false
             }
-            doc.lineWidth(1).roundedRect(tableX+30, yPosition-20, tableWidth-75, contentHeight+5, borde).fill('#031D35').stroke();
+            doc.lineWidth(1).roundedRect(tableX, yPosition-20, tableWidth, contentHeight+5, borde).fill('#031D35').stroke();
 
 
             doc.fontSize(12).fill('#ffffff')
@@ -1549,6 +1627,7 @@ router.post("/reportes_egreso", async (req, res) => {
         }
           
         doc.fontSize(9).fill('#000000')
+            .font('Arial')
             .text(numero, 25, yPosition + 2)
             .text(item.usuario_nombres, -390, yPosition + 2, {align: 'center'})
             .text(item.tipo_egreso_nombre, -50, yPosition + 2, {align: 'center'})
@@ -1630,12 +1709,17 @@ router.post("/reportes_ingreso", async (req, res) => {
     const addHeader = () => {
       doc.image(logoPath, 30, 30, { width: 100 });
         
-      doc.fontSize(15).fill('#000000').font('Helvetica-Bold')
+      /* doc.fontSize(15).fill('#000000').font('Helvetica-Bold')
          .text(headerText1, 160, headerTextY)
          .moveDown(1)
          .fontSize(12).text(headerText2,headerTextX2)
          //.fontSize(12).text(headerText3,headerTextX3)
-         .fontSize(12).text(headerText4,headerTextX4);
+         .fontSize(12).text(headerText4,headerTextX4); */
+         doc.fontSize(15).fill('#000000').font('Helvetica-Bold')
+   .text(headerText1, 160, headerTextY)
+   .moveDown(1)
+   .fontSize(12).text(headerText2,headerTextX2) 
+   .fontSize(12).font('Arial').text(headerText4,headerTextX4); 
       // Añadir la fecha en la parte superior derecha
      doc.fontSize(8)
         .text(formattedDate, doc.page.width - 80, 30);
@@ -1683,15 +1767,15 @@ router.post("/reportes_ingreso", async (req, res) => {
               if (totalRows % maxRowsPerPage === 0) {
                   // Si el número total de registros es múltiplo de maxRowsPerPage, la última página está llena
                   registrosUltimaPagina = maxRowsPerPage;
-                  doc.lineWidth(1).roundedRect(tableX+30, yPosition-20, tableWidth-75,(registrosUltimaPagina * rowHeight) + 20,borde).stroke();
+                  doc.lineWidth(1).roundedRect(tableX, yPosition-20, tableWidth,(registrosUltimaPagina * rowHeight) + 20,borde).stroke();
               } else {
                   // Si no, el número de registros en la última página es el resto de la división
                   registrosUltimaPagina = totalRows % maxRowsPerPage;
-                  doc.lineWidth(1).roundedRect(tableX+30, yPosition-20, tableWidth-75,(registrosUltimaPagina * rowHeight) + 20,borde).stroke();
+                  doc.lineWidth(1).roundedRect(tableX, yPosition-20, tableWidth,(registrosUltimaPagina * rowHeight) + 20,borde).stroke();
               }
               e = false
             }
-            doc.lineWidth(1).roundedRect(tableX+30, yPosition-20, tableWidth-75, contentHeight+5, borde).fill('#031D35').stroke();
+            doc.lineWidth(1).roundedRect(tableX, yPosition-20, tableWidth, contentHeight+5, borde).fill('#031D35').stroke();
 
 
             doc.fontSize(12).fill('#ffffff')
@@ -1704,6 +1788,7 @@ router.post("/reportes_ingreso", async (req, res) => {
             
             numero++
         } 
+
         if (i) {
           let registrosPrimeraPagina = 0;
             if (totalRows > maxRowsPerPage) {
