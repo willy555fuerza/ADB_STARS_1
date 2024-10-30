@@ -16,7 +16,7 @@ static async getAll() {
     if (!pool) {
       throw new Error('Error al conectar con PostgreSQL');
     }
-    const result = await pool.query('SELECT * FROM egreso');
+    const result = await pool.query('SELECT * FROM egreso ORDER BY  egreso.fecha_egreso DESC');
     await disconnectFromPostgres(pool);
     /* console.log(result.rows) */
     if (result.rows.length === 0) {
