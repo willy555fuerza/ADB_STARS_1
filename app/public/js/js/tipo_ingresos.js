@@ -260,8 +260,8 @@ const render = (data) => {
         { targets: [2], width: '400px' } // Establece el ancho de la tercera columna en 200px y máximo en 300px
       ],
       autoWidth: true,
-      order: [], // No ordenar ninguna columna al inicio
-      //order: [[0, 'desc']], // Ordenar la primera columna (columna del ID) de forma descendente al inicio
+      /* order: [], */ // No ordenar ninguna columna al inicio
+      order: [[2, 'desc']], // Ordenar la primera columna (columna del ID) de forma descendente al inicio
       columnDefs: [
         {
             targets: '_all',

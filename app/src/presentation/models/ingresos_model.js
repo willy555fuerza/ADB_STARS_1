@@ -16,7 +16,7 @@ class Usersmodel {
       if (!pool) {
         throw new Error('Error al conectar con PostgreSQL');
       }
-      const result = await pool.query('SELECT * FROM ingreso ORDER BY  ingreso.fecha_ingreso DESC');
+      const result = await pool.query('SELECT * FROM ingreso ORDER BY  ingreso.fecha_registro DESC');
       await disconnectFromPostgres(pool);
       /* console.log(result.rows) */
       if (result.rows.length === 0) {
@@ -42,8 +42,8 @@ class Usersmodel {
     
         // Obtener la fecha actual para la fecha de registro
         const currentDate = new Date();
-        const fecha_registro = currentDate.toISOString().slice(0, 19).replace('T', ' ');
-    
+        const fecha_registro = `${currentDate.getFullYear()}-${currentDate.getMonth() + 1}-${currentDate.getDate()} ${currentDate.getHours()}:${currentDate.getMinutes()}:${currentDate.getSeconds()}`;
+        console.log(fecha_registro)
         // Consulta para insertar un nuevo usuario en la base de datos
         const query = `
           INSERT INTO ingreso (fecha_ingreso, id_usuario, id_tipo_ingresos, id_miembro, monto, fecha_registro)

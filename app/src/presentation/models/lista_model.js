@@ -14,7 +14,7 @@ class Usersmodel {
       if (!pool) {
         throw new Error('Error al conectar con PostgreSQL');
       }
-      const result = await pool.query('SELECT * FROM lista');
+      const result = await pool.query('SELECT * FROM lista ORDER BY  lista.fecha_registro DESC');
       await disconnectFromPostgres(pool);
       /* console.log(result.rows) */
       if (result.rows.length === 0) {

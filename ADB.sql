@@ -31,7 +31,7 @@ CREATE TABLE miembro (
 		dirrecion VARCHAR(150) COLLATE "C" NOT NULL,
 		telefono INTEGER NOT NULL,
 		fecha_naci DATE NOT NULL,
-    registro_fecha DATE NOT NULL,
+    registro_fecha TIMESTAMP NOT NULL,
     estado BOOLEAN DEFAULT TRUE
 );
 
@@ -46,7 +46,7 @@ CREATE TABLE Ministerio (
     id_ministerio SERIAL PRIMARY KEY,
     nombre VARCHAR(150) COLLATE "C" NOT NULL,
     descripcion VARCHAR(150) COLLATE "C" NOT NULL,
-    registro_fecha DATE NOT NULL,
+    registro_fecha TIMESTAMP NOT NULL,
     estado BOOLEAN DEFAULT TRUE
 );
 
@@ -61,7 +61,7 @@ select * from ministerio;
 CREATE TABLE tipo_ingreso (
     id_tipo_ingresos SERIAL PRIMARY KEY,
     nombre VARCHAR(150) COLLATE "C" NOT NULL,
-    registro_fecha DATE NOT NULL,
+    registro_fecha TIMESTAMP NOT NULL,
     estado BOOLEAN DEFAULT TRUE
 );
 
@@ -107,7 +107,7 @@ SELECT i.*, u.nombres,t.nombre, m.nombres
 CREATE TABLE tipo_egreso (
     id_tipo_egresos SERIAL PRIMARY KEY,
     nombre VARCHAR(150) COLLATE "C" NOT NULL,
-    registro_fecha DATE NOT NULL,
+    registro_fecha TIMESTAMP NOT NULL,
     estado BOOLEAN DEFAULT TRUE
 );
 

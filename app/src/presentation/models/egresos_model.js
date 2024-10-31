@@ -41,8 +41,11 @@ static async getAll() {
       }
   
       // Obtener la fecha actual para la fecha de registro
+      /* const currentDate = new Date();
+      const fecha_registro = currentDate.toISOString().slice(0, 19).replace('T', ' '); */
       const currentDate = new Date();
-      const fecha_registro = currentDate.toISOString().slice(0, 19).replace('T', ' ');
+        const fecha_registro = `${currentDate.getFullYear()}-${currentDate.getMonth() + 1}-${currentDate.getDate()} ${currentDate.getHours()}:${currentDate.getMinutes()}:${currentDate.getSeconds()}`;
+        console.log(fecha_registro)
   
       // Consulta para insertar un nuevo usuario en la base de datos
       const query = `

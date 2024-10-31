@@ -350,9 +350,9 @@ const getAllTipoegresosPromise = getAllTipoegreso();
       year: "numeric",
       month: "2-digit",
       day: "2-digit",
-     /*  hour: "2-digit",
+      hour: "2-digit",
       minute: "2-digit",
-      second: "2-digit", */
+      second: "2-digit",
   });
 
    
@@ -454,7 +454,7 @@ const render = async (data) => {
                       pageLength: 5,
                       autoWidth: true,
                       // order: [], // No ordenar ninguna columna al inicio
-                      order: [[1, 'desc']], // Ordenar la primera columna (columna del ID) de forma descendente al inicio
+                      order: [[6, 'desc']], // Ordenar la primera columna (columna del ID) de forma descendente al inicio
                       columnDefs: [
                         {
                             targets: '_all',
