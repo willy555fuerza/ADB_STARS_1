@@ -511,7 +511,7 @@ const render = async (data) => {
                       pageLength: 5,
                       autoWidth: true,
                       // order: [], // No ordenar ninguna columna al inicio
-                      order: [[6, 'desc']], // Ordenar la primera columna (columna del ID) de forma descendente al inicio
+                      order: [[7, 'desc']], // Ordenar la primera columna (columna del ID) de forma descendente al inicio
                       columnDefs: [
                         {
                             targets: '_all',

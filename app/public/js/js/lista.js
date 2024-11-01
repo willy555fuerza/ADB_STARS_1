@@ -440,7 +440,7 @@ const getAllMeasuresPromise = getAllMeasure();
                           },
                           autoWidth: true,
                          /*  order: [], */ // No ordenar ninguna columna al inicio
-                         order: [[5, 'desc']], // Ordenar la primera columna (columna del ID) de forma descendente al inicio
+                         order: [[6, 'desc']], // Ordenar la primera columna (columna del ID) de forma descendente al inicio
                           columnDefs: [
                             {
                                 targets: '_all',

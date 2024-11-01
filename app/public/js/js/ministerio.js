@@ -264,7 +264,7 @@ const render = (data) => {
       ],
       autoWidth: true,
      /*  order: [],  */// No ordenar ninguna columna al inicio
-      order: [[3, 'desc']], // Ordenar la primera columna (columna del ID) de forma descendente al inicio
+      order: [[4, 'desc']], // Ordenar la primera columna (columna del ID) de forma descendente al inicio
       columnDefs: [
         {
             targets: '_all',
