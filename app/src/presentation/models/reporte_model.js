@@ -335,6 +335,7 @@ class UsersModel {
       const query = `
 
          SELECT 
+          TO_CHAR(lista.fecha_registro, 'DD/MM/YYYY') AS fecha_registro,
           ministerio.nombre AS nombre_ministerio,
           CONCAT(miembro.nombres, ' ', miembro.apellidos) AS nombre_completo_miembro
         FROM lista
@@ -342,7 +343,7 @@ class UsersModel {
         JOIN ministerio ON ministerio.id_ministerio = lista.id_ministerio
         WHERE lista.fecha_lista BETWEEN '${fechade}' AND '${fechaA}'
             AND lista.id_ministerio = ${id_ministerio}
-        ORDER BY nombre_completo_miembro DESC;
+        ORDER BY nombre_completo_miembro  DESC;
 
           `;
       const result = await pool.query(query);

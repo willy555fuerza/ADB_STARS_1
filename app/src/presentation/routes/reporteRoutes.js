@@ -1425,6 +1425,7 @@ router.post("/reportes_miembros/ministerios", async (req, res) => {
             doc.fontSize(12).fill('#ffffff')
               .font('Helvetica-Bold')
               .text('Nº', 60, yPosition - 16)
+              .text('fecha_registro', 50, yPosition - 16)
               .text('Total_Miembro por Ministerio', 280, yPosition - 16)
             
             numero++
@@ -1448,14 +1449,16 @@ router.post("/reportes_miembros/ministerios", async (req, res) => {
           doc.fontSize(12).fill('#ffffff')
             .font('Helvetica-Bold')
             .text('Nº', 60, yPosition - 16)
-            .text('Total_Miembros por  Ministerio', 210, yPosition - 16)
+            .text('fecha_registro', 90, yPosition - 16)
+            .text('Total_Miembros por  Ministerio', 245, yPosition - 16)
           i = false
         }
           
         doc.fontSize(9).fill('#000000')
             .font('Arial')
             .text(numero, 60, yPosition + 2)
-            .text(item.nombre_completo_miembro, 10, yPosition + 2, {align: 'center'})
+            .text(item.fecha_registro, 105, yPosition + 2)
+            .text(item.nombre_completo_miembro, 45, yPosition + 2, {align: 'center'})
 
         yPosition += rowHeight ;
         numero++
