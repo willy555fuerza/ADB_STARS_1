@@ -136,6 +136,7 @@ class UsersModel {
             tipo_ingreso.nombre AS tipo_ingreso_nombre, 
             CONCAT(miembro.nombres, ' ', miembro.apellidos) AS miembro_nombre_completo,
             SUM(ingreso.monto) AS total_ingresos, 
+            TO_CHAR(usuario.fecha_registro, 'DD/MM/YYYY') AS fecha_registro, 
             COUNT(ingreso.id_ingreso) AS cantidad_ingresos
           FROM ingreso
           JOIN usuario ON ingreso.id_usuario = usuario.id_usuario
@@ -143,7 +144,7 @@ class UsersModel {
           JOIN miembro ON ingreso.id_miembro = miembro.id_miembro
           WHERE ingreso.fecha_registro BETWEEN '${fechade}' AND '${fechaA}' 
           AND usuario.id_usuario = ${id_usuario}
-          GROUP BY usuario.id_usuario, usuario.nombres, usuario.apellidos, tipo_ingreso.nombre, miembro.nombres, miembro.apellidos
+          GROUP BY usuario.id_usuario, usuario.nombres, usuario.apellidos, tipo_ingreso.nombre,usuario.fecha_registro, miembro.nombres, miembro.apellidos
           ORDER BY total_ingresos DESC;
 
           `;
