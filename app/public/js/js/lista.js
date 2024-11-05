@@ -171,6 +171,26 @@ function mayus(e) {
     const fecha_lista = document.getElementById("fecha_lista").value;
     const miembro = document.getElementById("miembro").value;
     const ministerio = document.getElementById("ministerio").value;
+
+    const currentDate = new Date();
+    // Crear una nueva fecha con el valor de startDat
+    function formatToTwoDigits(value) {
+      return value < 10 ? '0' + value : value;
+    }
+  
+    const formattedCurrentDate = currentDate.getFullYear() + '-' +
+                               formatToTwoDigits(currentDate.getMonth() + 1) + '-' +
+                               formatToTwoDigits(currentDate.getDate());
+
+  
+    if (fecha_lista > formattedCurrentDate) {
+        Swal.fire({
+            icon: 'warning',
+            title: 'Fecha Inválida',
+            text: 'La fecha no debe ser mayor a la fecha actual.'
+        });
+        return;
+    }
 /* 
     console.log(descripcion, fecha_lista, miembro, ministerio) */
 

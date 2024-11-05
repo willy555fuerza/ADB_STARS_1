@@ -103,6 +103,26 @@ formAgregarUsuario.addEventListener("submit", async function (event) {
     const telefono = document.getElementById('telefono').value;
     const fecha_naci = document.getElementById('fecha_naci').value;
 
+    const currentDate = new Date();
+    // Crear una nueva fecha con el valor de startDat
+    function formatToTwoDigits(value) {
+      return value < 10 ? '0' + value : value;
+    }
+  
+    const formattedCurrentDate = currentDate.getFullYear() + '-' +
+                               formatToTwoDigits(currentDate.getMonth() + 1) + '-' +
+                               formatToTwoDigits(currentDate.getDate());
+
+  
+    if (fecha_naci > formattedCurrentDate) {
+        Swal.fire({
+            icon: 'warning',
+            title: 'Fecha Inválida',
+            text: 'La fecha de nacimiento no debe ser mayor o igual a la fecha actual.'
+        });
+        return;
+    }
+
     try {
         // Verificar si el token está presente en el localStorage
         const token = obtenerTokenre();

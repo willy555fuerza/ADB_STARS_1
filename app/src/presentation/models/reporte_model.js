@@ -178,6 +178,7 @@ class UsersModel {
           SELECT 
             miembro.id_miembro,
             CONCAT(miembro.nombres, ' ', miembro.apellidos) AS miembro_nombre_completo, 
+            TO_CHAR(miembro.registro_fecha, 'DD/MM/YYYY') AS registro_fecha,
             tipo_ingreso.nombre AS tipo_ingreso_nombre, 
             SUM(ingreso.monto) AS total_ingresos, 
             COUNT(ingreso.id_ingreso) AS cantidad_ingresos
@@ -235,6 +236,7 @@ class UsersModel {
 
           SELECT 
             tipo_ingreso.nombre AS tipo_ingreso_nombre, 
+            TO_CHAR(tipo_ingreso.registro_fecha, 'DD/MM/YYYY') AS registro_fecha,
             CONCAT(miembro.nombres, ' ', miembro.apellidos) as nombre_completo_miembro,
             SUM(ingreso.monto) AS total_ingresos, 
             COUNT(ingreso.id_ingreso) AS cantidad_ingresos
@@ -243,7 +245,7 @@ class UsersModel {
           JOIN miembro ON ingreso.id_miembro = miembro.id_miembro
           WHERE ingreso.fecha_ingreso BETWEEN '${fechade}' AND '${fechaA}'
               AND tipo_ingreso.id_tipo_ingresos = ${id_tipo_ingreso}
-          GROUP BY tipo_ingreso.nombre, miembro.nombres, miembro.apellidos
+          GROUP BY tipo_ingreso.nombre, tipo_ingreso.registro_fecha, miembro.nombres, miembro.apellidos
           ORDER BY total_ingresos DESC;
 
           `;
@@ -278,7 +280,8 @@ class UsersModel {
       const query = `
 
          SELECT 
-            tipo_egreso.nombre AS tipo_egreso_nombre, 
+            tipo_egreso.nombre AS tipo_egreso_nombre,
+            TO_CHAR(tipo_egreso.registro_fecha, 'DD/MM/YYYY') AS registro_fecha, 
             CONCAT(usuario.nombres, ' ', usuario.apellidos) as nombre_completo_usuario,
             SUM(egreso.monto) AS total_egresos, 
             COUNT(egreso.id_egreso) AS cantidad_egresos
@@ -287,7 +290,7 @@ class UsersModel {
           JOIN usuario ON egreso.id_usuario = usuario.id_usuario
           WHERE egreso.fecha_egreso BETWEEN '${fechade}' AND '${fechaA}'
             AND egreso.id_tipo_egresos = ${id_tipo_egreso} 
-          GROUP BY tipo_egreso.nombre,nombre_completo_usuario
+          GROUP BY tipo_egreso.nombre,tipo_egreso.registro_fecha,nombre_completo_usuario
           ORDER BY total_egresos DESC;
 
           `;
