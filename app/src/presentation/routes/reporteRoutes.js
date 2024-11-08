@@ -567,7 +567,7 @@ router.post("/reportes_ingresos/usuarios", async (req, res) => {
     const date = data[0].usuario_nombre_completo;
 
     // Crear un nuevo documento PDF
-    const doc = new PDFDocument({ layout: 'portrait', margin: 0 });
+    const doc = new PDFDocument({ layout: 'portrait', margin: 30 });
     let filename = "Recibo.pdf";
     filename = encodeURIComponent(filename);
 
@@ -602,6 +602,8 @@ router.post("/reportes_ingresos/usuarios", async (req, res) => {
     const headerTextX4 = (doc.page.width - headerTextWidth4) / 2
     const headerTextY = 30;
 
+    // Calcular el total de `total_ingresos`
+    const totalIngresos = data.reduce((sum, item) => sum + parseFloat(item.total_ingresos || 0), 0);
 
     const addHeader = () => {
       doc.image(logoPath, 30, 30, { width: 100 });
@@ -620,14 +622,17 @@ router.post("/reportes_ingresos/usuarios", async (req, res) => {
       // Añadir la fecha en la parte superior derecha
      doc.fontSize(8)
         .text(formattedDate, doc.page.width - 80, 30);
-
+      
+      // Mostrar total de ingresos en la parte superior derecha de la primera página
+      doc.fontSize(13).font('Helvetica-Bold')
+         .text(`Total Ingresos: ${totalIngresos.toFixed(2)} Bs`, doc.page.width - 200, 95, { align: 'right' });
     };
     
     const footer = (pageNumber, totalPages) =>{
         const finalYPosition = doc.page.height - 50; // Ajusta la posición Y según sea necesario
-
-        doc.fontSize(8).fill('#000000')
+   doc.fontSize(8).fill('#000000')
             .text(`Página ${pageNumber} de ${totalPages}`, doc.page.width - 100, finalYPosition + 10, { align: 'left' });
+     
     }
 
     let pageNumber = 1;
@@ -716,11 +721,11 @@ router.post("/reportes_ingresos/usuarios", async (req, res) => {
         doc.fontSize(9).fill('#000000')
             .font('Arial')
             .text(numero, 25, yPosition + 2)
-            .text(item.tipo_ingreso_nombre, -380, yPosition + 2, {align: 'center'})
-            .text(item.miembro_nombre_completo, -105, yPosition + 2, {align: 'center'})
-            .text(item.total_ingresos, 120, yPosition + 2, {align: 'center'})
-            .text(item.fecha_registro, 300, yPosition + 2, {align: 'center'})
-            .text(item.cantidad_ingresos, 470, yPosition + 2, {align: 'center'});
+            .text(item.tipo_ingreso_nombre, -350, yPosition + 2, {align: 'center'})
+            .text(item.miembro_nombre_completo, -75, yPosition + 2, {align: 'center'})
+            .text(item.total_ingresos, 150, yPosition + 2, {align: 'center'})
+            .text(item.fecha_registro, 330, yPosition + 2, {align: 'center'})
+            .text(item.cantidad_ingresos, 500, yPosition + 2, {align: 'center'});
 
         yPosition += rowHeight ;
         numero++
@@ -758,7 +763,7 @@ router.post("/reportes_ingresos/miembros", async (req, res) => {
     const date = data[0].miembro_nombre_completo;
 
     // Crear un nuevo documento PDF
-    const doc = new PDFDocument({ layout: 'portrait', margin: 0 });
+    const doc = new PDFDocument({ layout: 'portrait', margin: 30 });
     let filename = "Recibo.pdf";
     filename = encodeURIComponent(filename);
 
@@ -793,6 +798,8 @@ router.post("/reportes_ingresos/miembros", async (req, res) => {
     const headerTextX4 = (doc.page.width - headerTextWidth4) / 2
     const headerTextY = 30;
 
+    // Calcular el total de `total_ingresos`
+    const totalIngresos = data.reduce((sum, item) => sum + parseFloat(item.total_ingresos || 0), 0);
 
     const addHeader = () => {
       doc.image(logoPath, 30, 30, { width: 100 });
@@ -810,8 +817,11 @@ router.post("/reportes_ingresos/miembros", async (req, res) => {
          .fontSize(12).font('Arial').text(headerText3,headerTextX3);
       // Añadir la fecha en la parte superior derecha
      doc.fontSize(8)
-        .text(formattedDate, doc.page.width - 80, 30);
+        .text(formattedDate, doc.page.width - 80, 30)
 
+      // Mostrar total de ingresos en la parte superior derecha de la primera página
+      doc.fontSize(13).font('Helvetica-Bold')
+         .text(`Total Ingresos: ${totalIngresos.toFixed(2)} Bs`, doc.page.width - 200, 95, { align: 'right' });
     };
     
     const footer = (pageNumber, totalPages) =>{
@@ -905,10 +915,10 @@ router.post("/reportes_ingresos/miembros", async (req, res) => {
         doc.fontSize(9).fill('#000000')
             .font('Arial')
             .text(numero, 25, yPosition + 2)
-            .text(item.registro_fecha, -390, yPosition + 2, {align: 'center'})
-            .text(item.tipo_ingreso_nombre, -80, yPosition + 2, {align: 'center'})
-            .text(item.total_ingresos, 200, yPosition + 2, {align: 'center'})
-            .text(item.cantidad_ingresos, 440, yPosition + 2, {align: 'center'});
+            .text(item.registro_fecha, -360, yPosition + 2, {align: 'center'})
+            .text(item.tipo_ingreso_nombre, -50, yPosition + 2, {align: 'center'})
+            .text(item.total_ingresos, 230, yPosition + 2, {align: 'center'})
+            .text(item.cantidad_ingresos, 470, yPosition + 2, {align: 'center'});
 
         yPosition += rowHeight ;
         numero++
@@ -946,7 +956,7 @@ router.post("/reportes_ingresos/tipo_ingreso", async (req, res) => {
     const date = data[0].tipo_ingreso_nombre;
 
     // Crear un nuevo documento PDF
-    const doc = new PDFDocument({ layout: 'portrait', margin: 0 });
+    const doc = new PDFDocument({ layout: 'portrait', margin: 30 });
     let filename = "Recibo.pdf";
     filename = encodeURIComponent(filename);
 
@@ -981,6 +991,8 @@ router.post("/reportes_ingresos/tipo_ingreso", async (req, res) => {
     const headerTextX4 = (doc.page.width - headerTextWidth4) / 2
     const headerTextY = 30;
 
+    // Calcular el total de `total_ingresos`
+    const totalIngresos = data.reduce((sum, item) => sum + parseFloat(item.total_ingresos || 0), 0);
 
     const addHeader = () => {
       doc.image(logoPath, 30, 30, { width: 100 });
@@ -999,6 +1011,10 @@ router.post("/reportes_ingresos/tipo_ingreso", async (req, res) => {
       // Añadir la fecha en la parte superior derecha
      doc.fontSize(8)
         .text(formattedDate, doc.page.width - 80, 30);
+
+      // Mostrar total de ingresos en la parte superior derecha de la primera página
+      doc.fontSize(13).font('Helvetica-Bold')
+         .text(`Total Ingresos: ${totalIngresos.toFixed(2)} Bs`, doc.page.width - 200, 95, { align: 'right' });
 
     };
     
@@ -1093,10 +1109,10 @@ router.post("/reportes_ingresos/tipo_ingreso", async (req, res) => {
         doc.fontSize(9).fill('#000000')
             .font('Arial')
             .text(numero, 25, yPosition + 2)
-            .text(item.registro_fecha, -390, yPosition + 2, {align: 'center'})
-            .text(item.nombre_completo_miembro, -70, yPosition + 2, {align: 'center'})
-            .text(item.total_ingresos, 200, yPosition + 2, {align: 'center'})
-            .text(item.cantidad_ingresos, 440, yPosition + 2, {align: 'center'});
+            .text(item.registro_fecha, -360, yPosition + 2, {align: 'center'})
+            .text(item.nombre_completo_miembro, -40, yPosition + 2, {align: 'center'})
+            .text(item.total_ingresos, 230, yPosition + 2, {align: 'center'})
+            .text(item.cantidad_ingresos, 470, yPosition + 2, {align: 'center'});
 
         yPosition += rowHeight ;
         numero++
@@ -1133,7 +1149,7 @@ router.post("/reportes_egresos/tipo_egreso", async (req, res) => {
     const date = data[0].tipo_egreso_nombre;
 
     // Crear un nuevo documento PDF
-    const doc = new PDFDocument({ layout: 'portrait', margin: 0 });
+    const doc = new PDFDocument({ layout: 'portrait', margin: 30 });
     let filename = "Recibo.pdf";
     filename = encodeURIComponent(filename);
 
@@ -1168,6 +1184,8 @@ router.post("/reportes_egresos/tipo_egreso", async (req, res) => {
     const headerTextX4 = (doc.page.width - headerTextWidth4) / 2
     const headerTextY = 30;
 
+    // Calcular el total de `total_ingresos`
+    const totalIngresos = data.reduce((sum, item) => sum + parseFloat(item.total_egresos || 0), 0);
 
     const addHeader = () => {
       doc.image(logoPath, 30, 30, { width: 100 });
@@ -1186,6 +1204,10 @@ router.post("/reportes_egresos/tipo_egreso", async (req, res) => {
       // Añadir la fecha en la parte superior derecha
      doc.fontSize(8)
         .text(formattedDate, doc.page.width - 80, 30);
+
+      // Mostrar total de ingresos en la parte superior derecha de la primera página
+      doc.fontSize(13).font('Helvetica-Bold')
+         .text(`Total Egresos: ${totalIngresos.toFixed(2)} Bs`, doc.page.width - 200, 95, { align: 'right' });
 
     };
     
@@ -1280,10 +1302,10 @@ router.post("/reportes_egresos/tipo_egreso", async (req, res) => {
         doc.fontSize(9).fill('#000000')
             .font('Arial')
             .text(numero, 25, yPosition + 2)
-            .text(item.registro_fecha, -390, yPosition + 2, {align: 'center'})
-            .text(item.nombre_completo_usuario, -85, yPosition + 2, {align: 'center'})
-            .text(item.total_egresos, 200, yPosition + 2, {align: 'center'})
-            .text(item.cantidad_egresos, 440, yPosition + 2, {align: 'center'});
+            .text(item.registro_fecha, -360, yPosition + 2, {align: 'center'})
+            .text(item.nombre_completo_usuario, -55, yPosition + 2, {align: 'center'})
+            .text(item.total_egresos, 230, yPosition + 2, {align: 'center'})
+            .text(item.cantidad_egresos, 470, yPosition + 2, {align: 'center'});
 
         yPosition += rowHeight ;
         numero++
@@ -1495,7 +1517,7 @@ router.post("/reportes_egreso", async (req, res) => {
     /* const date = data[0].nombre_ministerio; */
 
     // Crear un nuevo documento PDF
-    const doc = new PDFDocument({ layout: 'portrait', margin: 0 });
+    const doc = new PDFDocument({ layout: 'portrait', margin: 30 });
     let filename = "Recibo.pdf";
     filename = encodeURIComponent(filename);
 
@@ -1530,6 +1552,8 @@ router.post("/reportes_egreso", async (req, res) => {
     const headerTextX4 = (doc.page.width - headerTextWidth4) / 2
     const headerTextY = 30;
 
+    // Calcular el total de `total_ingresos`
+    const totalIngresos = data.reduce((sum, item) => sum + parseFloat(item.monto || 0), 0);
 
     const addHeader = () => {
       doc.image(logoPath, 30, 30, { width: 100 });
@@ -1549,6 +1573,10 @@ router.post("/reportes_egreso", async (req, res) => {
       // Añadir la fecha en la parte superior derecha
      doc.fontSize(8)
         .text(formattedDate, doc.page.width - 80, 30);
+
+      // Mostrar total de ingresos en la parte superior derecha de la primera página
+      doc.fontSize(13).font('Helvetica-Bold')
+         .text(`Total Egresos: ${totalIngresos.toFixed(2)} Bs`, doc.page.width - 200, 95, { align: 'right' });
 
     };
     
@@ -1644,10 +1672,10 @@ router.post("/reportes_egreso", async (req, res) => {
         doc.fontSize(9).fill('#000000')
             .font('Arial')
             .text(numero, 25, yPosition + 2)
-            .text(item.usuario_nombres, -390, yPosition + 2, {align: 'center'})
-            .text(item.tipo_egreso_nombre, -50, yPosition + 2, {align: 'center'})
-            .text(item.monto, 250, yPosition + 2, {align: 'center'})
-            .text(item.fecha_egreso, 420, yPosition + 2, {align: 'center'});
+            .text(item.usuario_nombres, -360, yPosition + 2, {align: 'center'})
+            .text(item.tipo_egreso_nombre, -20, yPosition + 2, {align: 'center'})
+            .text(item.monto, 280, yPosition + 2, {align: 'center'})
+            .text(item.fecha_egreso, 450, yPosition + 2, {align: 'center'});
 
         yPosition += rowHeight ;
         numero++
@@ -1684,7 +1712,7 @@ router.post("/reportes_ingreso", async (req, res) => {
     /* const date = data[0].nombre_ministerio; */
 
     // Crear un nuevo documento PDF
-    const doc = new PDFDocument({ layout: 'portrait', margin: 0 });
+    const doc = new PDFDocument({ layout: 'portrait', margin: 30 });
     let filename = "Recibo.pdf";
     filename = encodeURIComponent(filename);
 
@@ -1720,6 +1748,8 @@ router.post("/reportes_ingreso", async (req, res) => {
     const headerTextX4 = (doc.page.width - headerTextWidth4) / 2
     const headerTextY = 30;
 
+    // Calcular el total de `total_ingresos`
+    const totalIngresos = data.reduce((sum, item) => sum + parseFloat(item.monto || 0), 0);
 
     const addHeader = () => {
       doc.image(logoPath, 30, 30, { width: 100 });
@@ -1738,6 +1768,10 @@ router.post("/reportes_ingreso", async (req, res) => {
       // Añadir la fecha en la parte superior derecha
      doc.fontSize(8)
         .text(formattedDate, doc.page.width - 80, 30);
+
+      // Mostrar total de ingresos en la parte superior derecha de la primera página
+      doc.fontSize(13).font('Helvetica-Bold')
+         .text(`Total Ingresos: ${totalIngresos.toFixed(2)} Bs`, doc.page.width - 200, 95, { align: 'right' });
 
     };
     
@@ -1833,10 +1867,10 @@ router.post("/reportes_ingreso", async (req, res) => {
           
         doc.fontSize(9).fill('#000000').font('Arial')
             .text(numero, 25, yPosition + 2)
-            .text(item.nombre_completo_usuario, -420, yPosition + 2, {align: 'center'})
-            .text(item.tipo_ingreso_nombre, -100, yPosition + 2, {align: 'center'})
-            .text(item.nombre_completo_miembro, 250, yPosition + 2, {align: 'center'})
-            .text(item.monto, 460, yPosition + 2, {align: 'center'});
+            .text(item.nombre_completo_usuario, -390, yPosition + 2, {align: 'center'})
+            .text(item.tipo_ingreso_nombre, -70, yPosition + 2, {align: 'center'})
+            .text(item.nombre_completo_miembro, 280, yPosition + 2, {align: 'center'})
+            .text(item.monto, 490, yPosition + 2, {align: 'center'});
 
         yPosition += rowHeight ;
         numero++

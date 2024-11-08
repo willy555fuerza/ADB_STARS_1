@@ -160,42 +160,65 @@ const getAllmiembro = async () => {
   }
 };
 
-// Función para poblar selectores
-const populateSelect = (selectElement, options, valueFieldName, textFieldName) => {
-  selectElement.innerHTML = '<option value="" >Seleccione una opción</option>';
+// Función para poblar selectores, con nombres y apellidos juntos
+const populateSelect = (selectElement, options, valueFieldName, textFieldName1, textFieldName2) => {
+  selectElement.innerHTML = '<option value="">Seleccione una opción</option>';
   options.forEach(option => {
       const optionElement = document.createElement("option");
       optionElement.value = option[valueFieldName];
-      optionElement.textContent = option[textFieldName];
+      // Combina nombres y apellidos
+      optionElement.textContent = `${option[textFieldName1]} ${option[textFieldName2]}`;
+      selectElement.appendChild(optionElement);
+  });
+};
+
+
+// Función para poblar selectores, con nombres y apellidos juntos
+const populateSelect2 = (selectElement, options, valueFieldName, textFieldName1) => {
+  selectElement.innerHTML = '<option value="">Seleccione una opción</option>';
+  options.forEach(option => {
+      const optionElement = document.createElement("option");
+      optionElement.value = option[valueFieldName];
+      // Combina nombres y apellidos
+      optionElement.textContent = `${option[textFieldName1]}`;
       selectElement.appendChild(optionElement);
   });
 };
 
 
 // Función para poblar los selectores del formulario
-const populateFormSelects = async () => {
-  /* const usuarioSelect = document.getElementById("usuario"); */
+const populateFormSelects2 = async () => {
   const tipo_ingresoSelect = document.getElementById("tipo_ingreso");
-  const miembroSelect = document.getElementById("miembro");
- 
-  /* const usuario = await getAllUsuario(); */
-  const tipo_ingreso = await getAllTipoingresos();
-  const miembro = await getAllmiembro();
 
-  /* populateSelect(usuarioSelect, usuario, "id_usuario", "nombres"); */
-  populateSelect(tipo_ingresoSelect, tipo_ingreso, "id_tipo_ingresos", "nombre");
-  populateSelect(miembroSelect, miembro, "id_miembro", "nombres");
+  const tipo_ingreso = await getAllTipoingresos();
+
+  populateSelect2(tipo_ingresoSelect, tipo_ingreso, "id_tipo_ingresos", "nombre");
 
   // Inicializa Select2 en los selectores después de haber poblado las opciones
   $(document).ready(function() {
-      /* $('#usuario').select2(); */
       $('#tipo_ingreso').select2();
+  });
+};
+
+
+// Función para poblar los selectores del formulario
+const populateFormSelects = async () => {
+  const miembroSelect = document.getElementById("miembro");
+
+  const miembro = await getAllmiembro();
+
+  populateSelect(miembroSelect, miembro, "id_miembro", "nombres", "apellidos");
+
+  // Inicializa Select2 en los selectores después de haber poblado las opciones
+  $(document).ready(function() {
       $('#miembro').select2();
   });
 };
 
 // Llama a la función para poblar los selectores del formulario
 populateFormSelects();
+populateFormSelects2();
+
 
 
  //***********************************crear usuario*************************************/
@@ -373,22 +396,23 @@ const getAllmiembros = async () => {
           throw new Error("Error en la solicitud");
       }
       const result = await response.json();
-      //console.log(result);
 
       if (result.error) {
           console.error("Error:", result.message);
           return {};
-      }else {
-        return result.data.reduce((acc, miasure) => {
-            acc[miasure.id_miembro] = miasure.nombres;
-            return acc;
-        }, {});
+      } else {
+          // Combina nombres y apellidos para el nombre completo
+          return result.data.reduce((acc, miembro) => {
+              acc[miembro.id_miembro] = `${miembro.nombres} ${miembro.apellidos}`;
+              return acc;
+          }, {});
       }
   } catch (error) {
       console.error("Error:", error.message);
       return {};
   }
 };
+
 
 const getAllUsuarioPromise = getAllUsuarios();
 const getAllTipoingresosPromise = getAllTipoingreso();
