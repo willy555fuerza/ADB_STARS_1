@@ -22,7 +22,7 @@
         <!--<div class="col-xl-5">-->
           <div class="mb-3">
             <label for="descripcion" class="form-label text-black-50">Descripcion</label>
-            <input type="text" class="form-control form-control-sm" id="descripcion" required />
+            <input type="text" class="form-control form-control-sm" id="descripcion" oninput="this.value = this.value.toUpperCase()" required />
           </div>
 
           <div class="mb-3">
@@ -31,12 +31,12 @@
           </div>
           <div class="mb-3">
             <label for="miembro" class="form-label text-black-50">Miembro</label>
-            <select class="form-select " id="miembro" required>
+            <select class="form-select " id="miembro" oninput="this.value = this.value.toUpperCase()" required>
             </select>
           </div>
           <div class="mb-3">
             <label for="ministerio" class="form-label text-black-50">Ministerio</label>
-            <select class="form-select" id="ministerio" required>
+            <select class="form-select" id="ministerio"  oninput="this.value = this.value.toUpperCase()"required>
             </select>
           </div>
          

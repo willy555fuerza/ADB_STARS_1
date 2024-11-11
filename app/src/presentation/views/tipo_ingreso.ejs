@@ -20,7 +20,7 @@
       <form id="form">
         <div class="mb-3">
           <label for="nombre" class="form-label text-black-50">Nombre:</label>
-          <input type="text" class="form-control" id="nombre" required />
+          <input type="text" class="form-control" id="nombre" oninput="this.value = this.value.toUpperCase()" required />
         </div>
       
         <div class="btnn d-flex justify-content-center">
