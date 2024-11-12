@@ -33,12 +33,12 @@
         </div> -->
         <div class="mb-3">
           <label for="tipo_ingreso" class="form-label">Tipos de Ingresos</label>
-          <select class="form-select" id="tipo_ingreso" required>
+          <select class="form-select" id="tipo_ingreso" oninput="this.value = this.value.toUpperCase()"  required>
           </select>
         </div>
         <div class="mb-3">
           <label for="miembro" class="form-label">Miembros</label>
-          <select class="form-select" id="miembro" required>
+          <select class="form-select" id="miembro"oninput="this.value = this.value.toUpperCase()"  required>
           </select>
         </div>
 

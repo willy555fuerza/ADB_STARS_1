@@ -23,11 +23,11 @@
       <form id="form">
         <div class="mb-3">
           <label for="nombres" class="form-label">Nombres</label>
-          <input type="text" class="form-control" id="nombres" required />
+          <input type="text" class="form-control" id="nombres" oninput="this.value = this.value.toUpperCase()" required />
         </div>
         <div class="mb-3">
           <label for="apellidos" class="form-label">Apellidos</label>
-          <input type="text" class="form-control" id="apellidos" required />
+          <input type="text" class="form-control" id="apellidos" oninput="this.value = this.value.toUpperCase()"  required />
         </div>
         <div class="mb-3">
           <label for="ci" class="form-label">Carnet de Identidad</label>
@@ -35,7 +35,7 @@
         </div>
         <div class="mb-3">
           <label for="dirrecion" class="form-label">Dirrecion</label>
-          <input type="text" class="form-control" id="dirrecion" required />
+          <input type="text" class="form-control" id="dirrecion" oninput="this.value = this.value.toUpperCase()" required />
         </div>
         <div class="mb-3">
           <label for="telefono" class="form-label">Telefono</label>
