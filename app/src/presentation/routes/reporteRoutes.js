@@ -309,11 +309,12 @@ router.post("/reportes_miembros/miembros", async (req, res) => {
             doc.fontSize(12).fill('#ffffff')
               .font('Helvetica-Bold')
               .text('Nº', 25, yPosition - 16)
-              .text('Nombres', 90, yPosition - 16)
-              .text('Apellidos', 195, yPosition - 16)
-              .text('CI', 320, yPosition - 16)
-              .text('Telefono', 380, yPosition - 16)
-              .text('Fecha_nacimiento', 470, yPosition - 16);
+              .text('Nombres', 70, yPosition - 16)
+              .text('Apellidos', 160, yPosition - 16)
+              .text('CI', 260, yPosition - 16)
+              .text('Telefono', 325, yPosition - 16)
+              .text('registro_fecha', 390, yPosition - 16)
+              .text('F_nacimiento', 490, yPosition - 16);
             
             numero++
         } 
@@ -336,21 +337,23 @@ router.post("/reportes_miembros/miembros", async (req, res) => {
           doc.fontSize(12).fill('#ffffff')
             .font('Helvetica-Bold')
             .text('Nº', 25, yPosition - 16)
-            .text('Nombres', 90, yPosition - 16)
-            .text('Apellidos', 195, yPosition - 16)
-            .text('CI', 320, yPosition - 16)
-            .text('Telefono', 380, yPosition - 16)
-            .text('Fecha_nacimiento', 470, yPosition - 16);
+            .text('Nombres', 70, yPosition - 16)
+            .text('Apellidos', 160, yPosition - 16)
+            .text('CI', 260, yPosition - 16)
+            .text('Telefono', 325, yPosition - 16)
+            .text('registro_fecha', 390, yPosition - 16)
+            .text('F_nacimiento', 490, yPosition - 16);
           i = false
         }
           
         doc.fontSize(9).fill('#000000')
             .font('Arial')
             .text(numero, 25, yPosition + 2)
-            .text(item.nombres, -390, yPosition + 2, {align: 'center'})
-            .text(item.apellidos, -170, yPosition + 2, {align: 'center'})
-            .text(item.ci, 45, yPosition + 2, {align: 'center'})
-            .text(item.telefono, 195, yPosition + 2, {align: 'center'})
+            .text(item.nombres, -420, yPosition + 2, {align: 'center'})
+            .text(item.apellidos, -230, yPosition + 2, {align: 'center'})
+            .text(item.ci, -70, yPosition + 2, {align: 'center'})
+            .text(item.telefono, 90, yPosition + 2, {align: 'center'})
+            .text(item.registro_fecha, 250, yPosition + 2, {align: 'center'})
             .text(item.fecha_naci, 430, yPosition + 2, {align: 'center'});
 
         yPosition += rowHeight ;
@@ -1833,8 +1836,8 @@ router.post("/reportes_ingreso", async (req, res) => {
               .text('Usuario', 70, yPosition - 16)
               .text('Tipo de ingreso', 210, yPosition - 16)
               .text('Miembro', 405, yPosition - 16)
-              .text('Monto', 520, yPosition - 16);
-            
+              .text('Monto', 520, yPosition - 16)
+              .text('Fecha_ingreso', 475, yPosition - 16);
             numero++
         } 
 
@@ -1858,9 +1861,10 @@ router.post("/reportes_ingreso", async (req, res) => {
             .font('Helvetica-Bold')
             .text('Nº', 25, yPosition - 16)
             .text('Usuario', 70, yPosition - 16)
-            .text('Tipo de ingreso', 210, yPosition - 16)
-            .text('Miembro', 405, yPosition - 16)
-            .text('Monto', 520, yPosition - 16);
+            .text('Tipo de ingreso', 170, yPosition - 16)
+            .text('Miembro', 315, yPosition - 16)
+            .text('Monto', 420, yPosition - 16)
+            .text('Fecha_ingreso', 490, yPosition - 16);
 
           i = false
         }
@@ -1868,9 +1872,11 @@ router.post("/reportes_ingreso", async (req, res) => {
         doc.fontSize(9).fill('#000000').font('Arial')
             .text(numero, 25, yPosition + 2)
             .text(item.nombre_completo_usuario, -390, yPosition + 2, {align: 'center'})
-            .text(item.tipo_ingreso_nombre, -70, yPosition + 2, {align: 'center'})
-            .text(item.nombre_completo_miembro, 280, yPosition + 2, {align: 'center'})
-            .text(item.monto, 490, yPosition + 2, {align: 'center'});
+            .text(item.tipo_ingreso_nombre, -160, yPosition + 2, {align: 'center'})
+            .text(item.nombre_completo_miembro, 110, yPosition + 2, {align: 'center'})
+            .text(item.monto, 295, yPosition + 2, {align: 'center'})
+            .text(item.fecha_ingreso, 480, yPosition + 2, {align: 'center'});
+
 
         yPosition += rowHeight ;
         numero++

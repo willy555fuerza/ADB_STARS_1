@@ -56,11 +56,12 @@ class UsersModel {
                 apellidos, 
                 ci,
                 telefono,
+                TO_CHAR(registro_fecha, 'DD/MM/YYYY') AS registro_fecha,
                 TO_CHAR(fecha_naci, 'DD/MM/YYYY') AS fecha_naci
             FROM miembro
             WHERE 
                 registro_fecha BETWEEN '${fechade}' AND '${fechaA}'
-            ORDER BY registro_fecha::date;;
+            ORDER BY registro_fecha::date;
 
           `;
       const result = await pool.query(query);
