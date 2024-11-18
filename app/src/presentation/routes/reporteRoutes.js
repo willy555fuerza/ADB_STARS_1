@@ -688,9 +688,9 @@ router.post("/reportes_ingresos/usuarios", async (req, res) => {
               .text('Nº', 25, yPosition - 16)
               .text('Tipo_ingreso', 80, yPosition - 16)
               .text('Miembro', 230, yPosition - 16)
-              .text('Total', 370, yPosition - 16)
-              .text('fecha_registro', 370, yPosition - 16)
-              .text('Contidad', 450, yPosition - 16);
+              .text('Total', 350, yPosition - 16)
+              .text('fecha_registro', 415, yPosition - 16)
+              .text('Contidad', 520, yPosition - 16);
             
             numero++
         } 
@@ -717,7 +717,7 @@ router.post("/reportes_ingresos/usuarios", async (req, res) => {
             .text('Miembro', 230, yPosition - 16)
             .text('Total', 350, yPosition - 16)
             .text('fecha_registro', 415, yPosition - 16)
-            .text('Contidad', 510, yPosition - 16);
+            .text('Contidad', 520, yPosition - 16);
           i = false
         }
           
@@ -728,7 +728,7 @@ router.post("/reportes_ingresos/usuarios", async (req, res) => {
             .text(item.miembro_nombre_completo, -75, yPosition + 2, {align: 'center'})
             .text(item.total_ingresos, 150, yPosition + 2, {align: 'center'})
             .text(item.fecha_registro, 330, yPosition + 2, {align: 'center'})
-            .text(item.cantidad_ingresos, 500, yPosition + 2, {align: 'center'});
+            .text(item.cantidad_ingresos, 510, yPosition + 2, {align: 'center'});
 
         yPosition += rowHeight ;
         numero++
@@ -882,9 +882,9 @@ router.post("/reportes_ingresos/miembros", async (req, res) => {
             doc.fontSize(12).fill('#ffffff')
               .font('Helvetica-Bold')
               .text('Nº', 25, yPosition - 16)
-              .text('Registro_fecha', 290, yPosition - 16)
-              .text('Tipo_ingreso', 470, yPosition - 16)
-              .text('Total_ingreso', 370, yPosition - 16)
+              .text('Registro_fecha', 70, yPosition - 16)
+              .text('Tipo_ingreso', 210, yPosition - 16)
+              .text('Total_ingreso', 340, yPosition - 16)
               .text('Contidad_ingreso', 470, yPosition - 16);
             
             numero++
@@ -909,8 +909,8 @@ router.post("/reportes_ingresos/miembros", async (req, res) => {
             .font('Helvetica-Bold')
             .text('Nº', 25, yPosition - 16)
             .text('Registro_fecha', 70, yPosition - 16)
-            .text('Tipo_ingreso', 230, yPosition - 16)
-            .text('Total_ingreso', 370, yPosition - 16)
+            .text('Tipo_ingreso', 210, yPosition - 16)
+            .text('Total_ingreso', 340, yPosition - 16)
             .text('Contidad_ingreso', 470, yPosition - 16);
           i = false
         }
@@ -919,8 +919,8 @@ router.post("/reportes_ingresos/miembros", async (req, res) => {
             .font('Arial')
             .text(numero, 25, yPosition + 2)
             .text(item.registro_fecha, -360, yPosition + 2, {align: 'center'})
-            .text(item.tipo_ingreso_nombre, -50, yPosition + 2, {align: 'center'})
-            .text(item.total_ingresos, 230, yPosition + 2, {align: 'center'})
+            .text(item.tipo_ingreso_nombre, -85, yPosition + 2, {align: 'center'})
+            .text(item.total_ingresos, 170, yPosition + 2, {align: 'center'})
             .text(item.cantidad_ingresos, 470, yPosition + 2, {align: 'center'});
 
         yPosition += rowHeight ;
@@ -1076,8 +1076,8 @@ router.post("/reportes_ingresos/tipo_ingreso", async (req, res) => {
             doc.fontSize(12).fill('#ffffff')
               .font('Helvetica-Bold')
               .text('Nº', 25, yPosition - 16)
-              .text('Registro_fecha', 220, yPosition - 16)
-              .text('Miembro', 220, yPosition - 16)
+              .text('Registro_fecha', 70, yPosition - 16)
+              .text('Miembro', 245, yPosition - 16)
               .text('Total_ingreso', 370, yPosition - 16)
               .text('Contidad_ingreso', 470, yPosition - 16);
             
@@ -1269,8 +1269,8 @@ router.post("/reportes_egresos/tipo_egreso", async (req, res) => {
             doc.fontSize(12).fill('#ffffff')
               .font('Helvetica-Bold')
               .text('Nº', 25, yPosition - 16)
-              .text('Usuario', 170, yPosition - 16)
-              .text('Registro_fecha', 220, yPosition - 16)
+              .text('Registro_fecha', 70, yPosition - 16)
+              .text('Usuario', 240, yPosition - 16)
               .text('Total_egreso', 370, yPosition - 16)
               .text('Contidad_egreso', 470, yPosition - 16);
             
@@ -1450,8 +1450,8 @@ router.post("/reportes_miembros/ministerios", async (req, res) => {
             doc.fontSize(12).fill('#ffffff')
               .font('Helvetica-Bold')
               .text('Nº', 60, yPosition - 16)
-              .text('fecha_registro', 50, yPosition - 16)
-              .text('Total_Miembro por Ministerio', 280, yPosition - 16)
+              .text('fecha_registro', 90, yPosition - 16)
+              .text('Total_Miembro por Ministerio', 245, yPosition - 16)
             
             numero++
         } 
@@ -1639,8 +1639,8 @@ router.post("/reportes_egreso", async (req, res) => {
               .font('Helvetica-Bold')
               .text('Nº', 25, yPosition - 16)
               .text('Usuario', 90, yPosition - 16)
-              .text('Tipo de egreso', 235, yPosition - 16)
-              .text('Monto', 415, yPosition - 16)
+              .text('Tipo de egreso', 220, yPosition - 16)
+              .text('Monto', 370, yPosition - 16)
               .text('Fecha_egreso', 475, yPosition - 16);
             
             numero++
@@ -1665,8 +1665,8 @@ router.post("/reportes_egreso", async (req, res) => {
             .font('Helvetica-Bold')
             .text('Nº', 25, yPosition - 16)
             .text('Usuario', 90, yPosition - 16)
-            .text('Tipo de egreso', 235, yPosition - 16)
-            .text('Monto', 415, yPosition - 16)
+            .text('Tipo de egreso', 220, yPosition - 16)
+            .text('Monto', 370, yPosition - 16)
             .text('Fecha_egreso', 475, yPosition - 16);
 
           i = false
@@ -1676,8 +1676,8 @@ router.post("/reportes_egreso", async (req, res) => {
             .font('Arial')
             .text(numero, 25, yPosition + 2)
             .text(item.usuario_nombres, -360, yPosition + 2, {align: 'center'})
-            .text(item.tipo_egreso_nombre, -20, yPosition + 2, {align: 'center'})
-            .text(item.monto, 280, yPosition + 2, {align: 'center'})
+            .text(item.tipo_egreso_nombre, -60, yPosition + 2, {align: 'center'})
+            .text(item.monto, 195, yPosition + 2, {align: 'center'})
             .text(item.fecha_egreso, 450, yPosition + 2, {align: 'center'});
 
         yPosition += rowHeight ;
@@ -1834,10 +1834,10 @@ router.post("/reportes_ingreso", async (req, res) => {
               .font('Helvetica-Bold')
               .text('Nº', 25, yPosition - 16)
               .text('Usuario', 70, yPosition - 16)
-              .text('Tipo de ingreso', 210, yPosition - 16)
-              .text('Miembro', 405, yPosition - 16)
-              .text('Monto', 520, yPosition - 16)
-              .text('Fecha_ingreso', 475, yPosition - 16);
+              .text('Tipo de ingreso', 170, yPosition - 16)
+              .text('Miembro', 315, yPosition - 16)
+              .text('Monto', 420, yPosition - 16)
+              .text('Fecha_ingreso', 490, yPosition - 16);
             numero++
         } 
 
